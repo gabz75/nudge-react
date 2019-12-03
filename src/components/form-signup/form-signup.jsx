@@ -7,9 +7,9 @@ import Input from '../input';
 import Button from '../button';
 import FormError from '../form-error';
 
-const LOGIN_MUTATION = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+const CREATE_USER = gql`
+  mutation login($email: String!, $password: String!, $name: String!) {
+    createUser(email: $email, password: $password, name: $name) {
       id
       email
       name
@@ -18,23 +18,21 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
-function FormLogin(props, state) {
+function FormSignup(props, state) {
   const [email, setEmail] = useState('gabe@gmail.com');
+  const [name, setName] = useState('gabe');
   const [password, setPassword] = useState('qweqweqwe');
-  const [jwt, setJwt] = useState();
   const [errorMessage, setErrorMessage] = useState();
-  const [login] = useMutation(LOGIN_MUTATION);
+  const [login] = useMutation(CREATE_USER);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    login({ variables: { email, password }})
+    login({ variables: { email, password, name }})
       .then(({ data }) => {
-        setJwt(data.login.jwt)
         setErrorMessage(null)
       })
       .catch((error) => {
-        setJwt(null);
         setErrorMessage(error.message);
       });
   }
@@ -42,17 +40,17 @@ function FormLogin(props, state) {
   return (
     <div className={props.className}>
       <form onSubmit={onSubmit} class="flex flex-col border-2 border-gray-400 bg-white p-4 rounded">
-        <Input type="text" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <Input type="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <Input type="text" label="Nam" value={name} onChange={(e) => setName(e.target.value)} />
         <hr class="my-4" />
-        <Button label="Login" />
+        <Button label="Signup" />
         { errorMessage && <FormError message={errorMessage} className="mt-4" />}
-        { jwt && <p>JWT: ${jwt} </p> }
       </form>
 
-      <p class="text-xs mt-2 text-center">Don't have an account yet? <Link to="/signup" class="text-white underline">Signup</Link> instead.</p>
+      <p class="text-xs mt-2 text-center">Already have an account? <Link to="/login" class="text-white underline">Login</Link> instead.</p>
     </div>
   );
 }
 
-export default FormLogin;
+export default FormSignup;
