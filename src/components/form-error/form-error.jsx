@@ -15,8 +15,8 @@ function FormError(props) {
   ].join(' ').concat(' ').concat(props.className);
 
   return (
-    <div class={className} role="alert">
-      <span class="block">{props.message}</span>
+    <div className={className} role="alert">
+      <span className="block">{props.message}</span>
     </div>
   )
 };
