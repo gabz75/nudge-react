@@ -38,10 +38,11 @@ function FormLogin(props, state) {
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="flex flex-col border-2 border-gray-400 bg-white p-4 rounded">
       <Input type="text" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <Input type="password" label="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <Button label="Submit"/>
+      <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <hr className="my-4" />
+      <Button label="Login" />
       { errorMessage && <p>${errorMessage}</p> }
       { jwt && <p>JWT: ${jwt} </p> }
     </form>
