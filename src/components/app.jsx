@@ -11,8 +11,8 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="mt-32 flex justify-center items-center">
-        <FormLogin/>
+      <div class="mt-32 flex justify-center items-center">
+        <FormLogin className="w-1/4"/>
       </div>
     </ApolloProvider>
   );

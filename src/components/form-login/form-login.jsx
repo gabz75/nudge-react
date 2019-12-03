@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 
 import Input from '../input';
 import Button from '../button';
+import FormError from '../form-error';
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -17,6 +18,7 @@ const LOGIN_MUTATION = gql`
 `;
 
 function FormLogin(props, state) {
+  const className = props.className.concat(" flex flex-col border-2 border-gray-400 bg-white p-4 rounded");
   const [email, setEmail] = useState('gabe@gmail.com');
   const [password, setPassword] = useState('qweqweqwe');
   const [jwt, setJwt] = useState();
@@ -38,12 +40,12 @@ function FormLogin(props, state) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col border-2 border-gray-400 bg-white p-4 rounded">
+    <form onSubmit={onSubmit} className={className}>
       <Input type="text" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <hr className="my-4" />
+      <hr class="my-4" />
       <Button label="Login" />
-      { errorMessage && <p>${errorMessage}</p> }
+      { errorMessage && <FormError message={errorMessage} className="mt-4" />}
       { jwt && <p>JWT: ${jwt} </p> }
     </form>
   );
