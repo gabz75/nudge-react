@@ -1,1 +1,1 @@
-export { default } from './form-error'
+export { default } from './form-error';
