@@ -1,25 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Button(props) {
-  const defaultClassName = [
-    'bg-blue-500',
-    'hover:bg-blue-400',
-    'text-white',
-    'font-bold',
-    'py-2',
-    'px-4',
-    'border-b-4',
-    'border-blue-700',
-    'hover:border-blue-500',
-    'rounded',
-  ];
+import { useClassNameHelper } from '../../hooks/use-class-name-helper';
 
-  const className = defaultClassName.concat(props.className).join(' ');
+function Button(props) {
+  // props
+  const {
+    className, type, onClick, label,
+  } = props;
+
+  // hooks
+  const ch = useClassNameHelper()
+    .register('btn', [
+      'bg-blue-500',
+      'hover:bg-blue-400',
+      'text-white',
+      'font-bold',
+      'py-2',
+      'px-4',
+      'border-b-4',
+      'border-blue-700',
+      'hover:border-blue-500',
+      'rounded',
+    ]);
 
   return (
-    <button type={props.type} onClick={props.onClick} className={className}>
-      {props.label}
+    <button type={type} onClick={onClick} className={ch.get('btn', className)}>
+      {label}
     </button>
   );
 }

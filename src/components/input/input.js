@@ -2,40 +2,46 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
 
+import { useClassNameHelper } from '../../hooks/use-class-name-helper';
+
 function Input(props) {
+  // props
   const {
     value, className, label, type, onChange,
   } = props;
-  const inputClassName = [
-    'focus:outline-none',
-    'focus:border-gray-500',
-    'border',
-    'border-gray-300',
-    'rounded-lg',
-    'p-2',
-    'inline-block',
-    'w-full',
-    'appearance-none',
-    'leading-normal',
-  ].join(' ');
-  const labelClassName = [
-    'bg-white',
-    'py-2',
-    'inline-block',
-    'w-full',
-    'appearance-none',
-    'leading-normal',
-  ].join(' ');
-  const [currentValue] = useState(value);
+
+  // hooks
+  const ch = useClassNameHelper()
+    .register('label', [
+      'bg-white',
+      'py-2',
+      'inline-block',
+      'w-full',
+      'appearance-none',
+      'leading-normal',
+    ])
+    .register('input', [
+      'focus:outline-none',
+      'focus:border-gray-500',
+      'border',
+      'border-gray-300',
+      'rounded-lg',
+      'p-2',
+      'inline-block',
+      'w-full',
+      'appearance-none',
+      'leading-normal',
+    ]);
+
   const [id] = useState(() => uniqueId('input-'));
 
   return (
     <div className={className}>
-      <label htmlFor={id} className={labelClassName}>
+      <label htmlFor={id} className={ch.get('label')}>
         {label}
         :
       </label>
-      <input id={id} type={type} value={currentValue} onChange={onChange} className={inputClassName} />
+      <input id={id} type={type} value={value} onChange={onChange} className={ch.get('input')} />
     </div>
   );
 }
@@ -53,7 +59,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  value: null,
+  value: '',
   className: null,
   onChange: () => {},
 };

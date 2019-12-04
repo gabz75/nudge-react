@@ -5,9 +5,11 @@ import Button from '../button';
 import { useAuth } from '../../hooks/use-auth';
 
 function Dashboard() {
+  // hooks
   const { isAuthenticated, logout } = useAuth();
   const history = useHistory();
 
+  // handlers
   const logoutAndRedirect = () => {
     logout();
     history.push('/login');

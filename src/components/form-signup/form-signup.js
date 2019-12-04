@@ -7,22 +7,24 @@ import Button from '../button';
 import FormError from '../form-error';
 
 function FormSignup(props) {
-  const [email, setEmail] = useState(props.email);
-  const [password, setPassword] = useState(props.password);
-  const [name, setName] = useState(props.name);
-  const [errorMessage, setErrorMessage] = useState(props.errorMessage);
+  // props
+  const { onSubmit, className } = props;
 
+  // hooks
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [name, setName] = useState();
+  const [errorMessage, setErrorMessage] = useState();
 
-  const onSubmit = (e) => {
+  // handlers
+  const handleSubmit = (e) => {
     e.preventDefault();
-    props
-      .onSubmit({ email, password, name })
-      .catch((error) => setErrorMessage(error.message));
+    onSubmit({ email, password, name }).catch((error) => setErrorMessage(error.message));
   };
 
   return (
-    <div className={props.className}>
-      <form onSubmit={onSubmit} className="flex flex-col border-2 border-gray-400 bg-white p-4 rounded">
+    <div className={className}>
+      <form onSubmit={handleSubmit} className="flex flex-col border-2 border-gray-400 bg-white p-4 rounded">
         <Input type="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
@@ -32,7 +34,7 @@ function FormSignup(props) {
       </form>
 
       <p className="text-xs mt-2 text-center">
-        Already have an account?
+        Already have an account?&nbsp;
         <Link to="/login" className="text-white underline">Log in</Link>
       </p>
     </div>
@@ -40,19 +42,11 @@ function FormSignup(props) {
 }
 
 FormSignup.propTypes = {
-  email: PropTypes.string,
-  password: PropTypes.string,
-  name: PropTypes.string,
-  errorMessage: PropTypes.string,
   onSubmit: PropTypes.func,
   className: PropTypes.func,
 };
 
 FormSignup.defaultProps = {
-  email: null,
-  password: null,
-  name: null,
-  errorMessage: null,
   onSubmit: () => {},
   className: null,
 };

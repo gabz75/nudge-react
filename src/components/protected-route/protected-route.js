@@ -7,6 +7,7 @@ import { useAuth } from '../../hooks/use-auth';
 /* eslint-disable react/jsx-props-no-spreading */
 
 function ProtectedRoute({ component: Component, ...rest }) {
+  // hooks
   const { isAuthenticated } = useAuth();
 
   return (
