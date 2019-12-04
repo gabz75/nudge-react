@@ -36,32 +36,30 @@ export const useProvideAuth = () => {
   const [createUserMutation] = useMutation(CREATE_USER_MUTATION);
   const history = useHistory();
 
-  const login = (variables) => {
-    return loginMutation({ variables })
+  const login = (variables) => (
+    loginMutation({ variables })
       .then(({ data }) => {
         window.localStorage.setItem(STORAGE_KEY, data.login.jwt);
         setJWT(data.login.jwt);
         history.push('/dashboard');
-      });
-  };
+      })
+  );
 
   const logout = () => {
     setJWT(null);
     window.localStorage.removeItem(STORAGE_KEY);
   };
 
-  const signup = (variables) => {
-    return createUserMutation({ variables })
+  const signup = (variables) => (
+    createUserMutation({ variables })
       .then(({ data }) => {
         window.localStorage.setItem(STORAGE_KEY, data.createUser.jwt);
         setJWT(data.createUser.jwt);
         history.push('/dashboard');
       })
-  }
+  );
 
-  const isAuthenticated = () => {
-    return jwt;
-  }
+  const isAuthenticated = () => jwt;
 
   return {
     jwt,

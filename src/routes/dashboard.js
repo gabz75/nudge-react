@@ -11,4 +11,3 @@ function DashboardRoute() {
 }
 
 export default DashboardRoute;
-

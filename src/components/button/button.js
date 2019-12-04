@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Button(props) {
   const defaultClassName = [
@@ -17,10 +18,24 @@ function Button(props) {
   const className = defaultClassName.concat(props.className).join(' ');
 
   return (
-    <button onClick={props.onClick} className={className}>
+    <button type={props.type} onClick={props.onClick} className={className}>
       {props.label}
     </button>
   );
 }
+
+Button.propTypes = {
+  className: PropTypes.string,
+  label: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+};
+
+Button.defaultProps = {
+  type: 'button',
+  className: null,
+  label: null,
+  onClick: () => {},
+};
 
 export default Button;

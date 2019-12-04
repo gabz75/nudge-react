@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function FormError(props) {
   const className = [
@@ -18,7 +19,17 @@ function FormError(props) {
     <div className={className} role="alert">
       <span className="block">{props.message}</span>
     </div>
-  )
+  );
+}
+
+FormError.propTypes = {
+  className: PropTypes.string,
+  message: PropTypes.string,
+};
+
+FormError.defaultProps = {
+  className: null,
+  message: null,
 };
 
 export default FormError;

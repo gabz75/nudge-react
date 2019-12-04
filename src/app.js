@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
   Redirect,
-} from "react-router-dom";
+} from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
@@ -23,18 +23,18 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-        <BrowserRouter>
-          <Switch>
-            <ProvideAuth>
-              <Route exact path="/">
-                <Redirect push to="/login" />
-              </Route>
-              <UnauthenticatedRoute path="/login" component={LoginRoute} />
-              <UnauthenticatedRoute path="/signup" component={SignupRoute} />
-              <ProtectedRoute path="/dashboard" component={DashboardRoute} />
-            </ProvideAuth>
-          </Switch>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Switch>
+          <ProvideAuth>
+            <Route exact path="/">
+              <Redirect push to="/login" />
+            </Route>
+            <UnauthenticatedRoute path="/login" component={LoginRoute} />
+            <UnauthenticatedRoute path="/signup" component={SignupRoute} />
+            <ProtectedRoute path="/dashboard" component={DashboardRoute} />
+          </ProvideAuth>
+        </Switch>
+      </BrowserRouter>
     </ApolloProvider>
   );
 }

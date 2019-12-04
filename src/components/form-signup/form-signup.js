@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Input from '../input';
@@ -14,9 +15,10 @@ function FormSignup(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    props.onSubmit({ email, password, name })
-         .catch((error) => setErrorMessage(error.message));
-  }
+    props
+      .onSubmit({ email, password, name })
+      .catch((error) => setErrorMessage(error.message));
+  };
 
   return (
     <div className={props.className}>
@@ -25,15 +27,34 @@ function FormSignup(props) {
         <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <hr className="my-4" />
-        <Button label="Signup" />
+        <Button label="Signup" type="submit" />
         { errorMessage && <FormError message={errorMessage} className="mt-4" />}
       </form>
 
       <p className="text-xs mt-2 text-center">
-        Already have an account? <Link to="/login" className="text-white underline">Log in</Link>
+        Already have an account?
+        <Link to="/login" className="text-white underline">Log in</Link>
       </p>
     </div>
   );
 }
+
+FormSignup.propTypes = {
+  email: PropTypes.string,
+  password: PropTypes.string,
+  name: PropTypes.string,
+  errorMessage: PropTypes.string,
+  onSubmit: PropTypes.func,
+  className: PropTypes.func,
+};
+
+FormSignup.defaultProps = {
+  email: null,
+  password: null,
+  name: null,
+  errorMessage: null,
+  onSubmit: () => {},
+  className: null,
+};
 
 export default FormSignup;
