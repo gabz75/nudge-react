@@ -18,7 +18,6 @@ module.exports = {
     ],
     "rules": {
       "react/button-has-type": 0,
-      "react/destructuring-assignment": 0,
       "react/jsx-filename-extension": 0,
       "max-len": [1, 120],
     }
