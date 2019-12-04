@@ -1,42 +1,21 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { gql } from 'apollo-boost';
-import { useMutation } from '@apollo/react-hooks';
+import { Link } from 'react-router-dom';
 
 import Input from '../input';
 import Button from '../button';
 import FormError from '../form-error';
 
-const CREATE_USER = gql`
-  mutation login($email: String!, $password: String!, $name: String!) {
-    createUser(email: $email, password: $password, name: $name) {
-      id
-      email
-      name
-      jwt
-    }
-  }
-`;
+function FormSignup(props) {
+  const [email, setEmail] = useState(props.email);
+  const [password, setPassword] = useState(props.password);
+  const [name, setName] = useState(props.name);
+  const [errorMessage, setErrorMessage] = useState(props.errorMessage);
 
-function FormSignup(props, state) {
-  const [email, setEmail] = useState();
-  const [name, setName] = useState();
-  const [password, setPassword] = useState();
-  const [errorMessage, setErrorMessage] = useState();
-  const [createUser] = useMutation(CREATE_USER);
-  const history = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    createUser({ variables: { email, password, name }})
-      .then(({ data }) => {
-        setErrorMessage(null)
-        history.push('/dashboard');
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      });
+    props.onSubmit({ email, password, name })
+         .catch((error) => setErrorMessage(error.message));
   }
 
   return (
