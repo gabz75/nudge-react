@@ -58,7 +58,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  value: '', // @todo: why undefined creates an uncontroller/controller component switch?
+  value: '', // @todo: why undefined creates an uncontrolled/controlled component switch?
   className: undefined,
   onChange: () => {},
 };
