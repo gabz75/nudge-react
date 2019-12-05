@@ -48,7 +48,7 @@ FormSignup.propTypes = {
 
 FormSignup.defaultProps = {
   onSubmit: () => {},
-  className: null,
+  className: undefined,
 };
 
 export default FormSignup;

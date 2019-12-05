@@ -3,6 +3,8 @@ import React from 'react';
 import FormLogin from '../components/form-login';
 import { useAuth } from '../hooks/use-auth';
 
+export const PATH = '/login';
+
 function Login() {
   const { login } = useAuth();
 
@@ -12,5 +14,7 @@ function Login() {
     </div>
   );
 }
+
+Login.path = PATH;
 
 export default Login;

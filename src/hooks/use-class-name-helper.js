@@ -3,16 +3,18 @@ class ClassNameHelper {
     this.classMapping = {};
   }
 
-  register(key, classes) {
+  register(key, ...classNameArrays) {
     if (!this.classMapping[key]) {
       this.classMapping[key] = [];
     }
 
-    if (Array.isArray(classes)) {
-      this.classMapping[key] = this.classMapping[key].concat(classes);
-    } else {
-      this.classMapping[key].push(classes);
-    }
+    classNameArrays.forEach((classNameArray) => {
+      if (!Array.isArray(classNameArray)) {
+        throw new Error('Arguments after key must be arrays');
+      }
+
+      this.classMapping[key] = this.classMapping[key].concat(classNameArray);
+    });
 
     return this;
   }

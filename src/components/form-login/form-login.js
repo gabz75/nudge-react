@@ -46,7 +46,7 @@ FormLogin.propTypes = {
 
 FormLogin.defaultProps = {
   onSubmit: () => {},
-  className: null,
+  className: undefined,
 };
 
 export default FormLogin;

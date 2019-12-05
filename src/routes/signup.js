@@ -3,6 +3,8 @@ import React from 'react';
 import FormSignup from '../components/form-signup';
 import { useAuth } from '../hooks/use-auth';
 
+export const PATH = '/signup';
+
 function Signup() {
   const { signup } = useAuth();
 
@@ -12,5 +14,7 @@ function Signup() {
     </div>
   );
 }
+
+Signup.path = PATH;
 
 export default Signup;
