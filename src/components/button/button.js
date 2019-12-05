@@ -3,10 +3,26 @@ import PropTypes from 'prop-types';
 
 import { useClassNameHelper } from '../../hooks/use-class-name-helper';
 
+const CLASS_NAMES_SIZE_MAPPING = {
+  sm: [
+    'py-1',
+    'px-2',
+    'text-xs',
+    'font-bold',
+  ],
+
+  md: [
+    'py-2',
+    'px-4',
+    'text-sm',
+    'font-bold',
+  ],
+};
+
 function Button(props) {
   // props
   const {
-    className, type, onClick, label,
+    className, type, size, onClick, label,
   } = props;
 
   // hooks
@@ -15,14 +31,11 @@ function Button(props) {
       'bg-blue-500',
       'hover:bg-blue-400',
       'text-white',
-      'font-bold',
-      'py-2',
-      'px-4',
       'border-b-4',
       'border-blue-700',
       'hover:border-blue-500',
       'rounded',
-    ]);
+    ], CLASS_NAMES_SIZE_MAPPING[size]);
 
   return (
     <button type={type} onClick={onClick} className={ch.get('btn', className)}>
@@ -36,13 +49,15 @@ Button.propTypes = {
   label: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  size: PropTypes.oneOf(['sm', 'md']),
 };
 
 Button.defaultProps = {
-  type: 'button',
-  className: null,
-  label: null,
+  className: undefined,
+  label: undefined,
   onClick: () => {},
+  type: 'button',
+  size: 'md',
 };
 
 export default Button;

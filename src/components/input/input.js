@@ -13,7 +13,6 @@ function Input(props) {
   // hooks
   const ch = useClassNameHelper()
     .register('label', [
-      'bg-white',
       'py-2',
       'inline-block',
       'w-full',
@@ -59,8 +58,8 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  value: '',
-  className: null,
+  value: '', // @todo: why undefined creates an uncontroller/controller component switch?
+  className: undefined,
   onChange: () => {},
 };
 

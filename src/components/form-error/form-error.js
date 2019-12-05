@@ -35,8 +35,8 @@ FormError.propTypes = {
 };
 
 FormError.defaultProps = {
-  className: null,
-  message: null,
+  className: undefined,
+  message: undefined,
 };
 
 export default FormError;

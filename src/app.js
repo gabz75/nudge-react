@@ -16,9 +16,23 @@ import LoginRoute from './routes/login';
 import SignupRoute from './routes/signup';
 import DashboardRoute from './routes/dashboard';
 
+import NudgeNewRoute from './routes/nudge/new';
+import NudgeUpdateRoute from './routes/nudge/update';
+import NudgeDeleteRoute from './routes/nudge/delete';
+
+import { STORAGE_AUTH_KEY } from './hooks/use-provide-auth';
+
 function App() {
   const client = new ApolloClient({
     uri: 'http://localhost:3000/graphql',
+    request: (operation) => {
+      const token = localStorage.getItem(STORAGE_AUTH_KEY);
+      operation.setContext({
+        headers: {
+          authorization: token ? `Bearer ${token}` : '',
+        },
+      });
+    },
   });
 
   return (
@@ -29,9 +43,12 @@ function App() {
             <Route exact path="/">
               <Redirect push to="/login" />
             </Route>
-            <UnauthenticatedRoute path="/login" component={LoginRoute} />
-            <UnauthenticatedRoute path="/signup" component={SignupRoute} />
-            <ProtectedRoute path="/dashboard" component={DashboardRoute} />
+            <UnauthenticatedRoute path={LoginRoute.path} component={LoginRoute} />
+            <UnauthenticatedRoute path={SignupRoute.path} component={SignupRoute} />
+            <ProtectedRoute path={DashboardRoute.path} component={DashboardRoute} />
+            <ProtectedRoute path={NudgeNewRoute.path} component={NudgeNewRoute} />
+            <ProtectedRoute path={NudgeUpdateRoute.path} component={NudgeUpdateRoute} />
+            <ProtectedRoute path={NudgeDeleteRoute.path} component={NudgeDeleteRoute} />
           </ProvideAuth>
         </Switch>
       </BrowserRouter>

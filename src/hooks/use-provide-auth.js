@@ -1,68 +1,49 @@
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { gql } from 'apollo-boost';
-import { useMutation } from '@apollo/react-hooks';
 
-const STORAGE_KEY = 'nudge_authentication_jwt';
+import { PATH as DashboardPath } from '../routes/dashboard';
+import { useNudgeApi } from './use-nudge-api';
 
-const LOGIN_MUTATION = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      id
-      email
-      name
-      jwt
-    }
-  }
-`;
-
-const CREATE_USER_MUTATION = gql`
-  mutation login($email: String!, $password: String!, $name: String!) {
-    createUser(email: $email, password: $password, name: $name) {
-      id
-      email
-      name
-      jwt
-    }
-  }
-`;
+export const STORAGE_AUTH_KEY = 'nudge_authentication_jwt';
 
 export const useProvideAuth = () => {
-  const localStorageJWT = window.localStorage.getItem(STORAGE_KEY);
-
-  const [jwt, setJWT] = useState(localStorageJWT);
-
-  const [loginMutation] = useMutation(LOGIN_MUTATION);
-  const [createUserMutation] = useMutation(CREATE_USER_MUTATION);
+  const { login: loginMutation, createUser: createUserMutation } = useNudgeApi();
   const history = useHistory();
 
+  /**
+   * Login and stores the JWT in localStorage.
+   */
   const login = (variables) => (
-    loginMutation({ variables })
+    loginMutation(variables)
       .then(({ data }) => {
-        window.localStorage.setItem(STORAGE_KEY, data.login.jwt);
-        setJWT(data.login.jwt);
-        history.push('/dashboard');
+        window.localStorage.setItem(STORAGE_AUTH_KEY, data.login.jwt);
+        history.push(DashboardPath);
       })
   );
 
+  /**
+   * Clear JWT in localStorage and logs out the user.
+   */
   const logout = () => {
-    setJWT(null);
-    window.localStorage.removeItem(STORAGE_KEY);
+    window.localStorage.removeItem(STORAGE_AUTH_KEY);
   };
 
+  /**
+   * Create a user and stores the JWT in localStorage.
+   */
   const signup = (variables) => (
-    createUserMutation({ variables })
+    createUserMutation(variables)
       .then(({ data }) => {
-        window.localStorage.setItem(STORAGE_KEY, data.createUser.jwt);
-        setJWT(data.createUser.jwt);
-        history.push('/dashboard');
+        window.localStorage.setItem(STORAGE_AUTH_KEY, data.createUser.jwt);
+        history.push(DashboardPath);
       })
   );
 
-  const isAuthenticated = () => jwt;
+  /**
+   * @return {boolean} whether there is a JWT in localStorage
+   */
+  const isAuthenticated = () => window.localStorage.getItem(STORAGE_AUTH_KEY);
 
   return {
-    jwt,
     isAuthenticated,
     login,
     logout,
