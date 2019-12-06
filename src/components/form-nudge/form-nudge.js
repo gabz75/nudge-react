@@ -38,7 +38,7 @@ function FormNudge(props) {
       <form onSubmit={handleSubmit} className="flex flex-col border-2 border-gray-400 bg-white p-4 rounded">
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <Input type="text" label="Color" value={color} onChange={(e) => setColor(e.target.value)} />
-        <Checkbox label="Public" value={_public} onChange={(e) => setPublic(e.target.value)} />
+        <Checkbox label="Public" checked={_public} onChange={(e) => setPublic(e.target.checked)} />
         <Button label="Submit" type="submit" />
         { errorMessage && <FormError message={errorMessage} className="mt-4" />}
       </form>
