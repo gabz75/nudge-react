@@ -17,11 +17,11 @@ export const useNudgeApi = () => {
   const [loginMutation] = useMutation(gql(MutationLogin));
   const [updateNudgeMutation] = useMutation(gql(MutationUpdateNudge));
 
-  const createNudge = (variables) => createNudgeMutation({ variables });
-  const createUser = (variables) => createUserMutation({ variables });
-  const deleteNudge = (variables) => deleteNudgeMutation({ variables });
-  const login = (variables) => loginMutation({ variables });
-  const updateNudge = (variables) => updateNudgeMutation({ variables });
+  const createNudge = (args) => createNudgeMutation(args);
+  const createUser = (args) => createUserMutation(args);
+  const deleteNudge = (args) => deleteNudgeMutation(args);
+  const login = (args) => loginMutation(args);
+  const updateNudge = (args) => updateNudgeMutation(args);
 
   return {
     createNudge,

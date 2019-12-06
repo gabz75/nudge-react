@@ -21,7 +21,7 @@ function NudgeUpdate(props) {
 
 
   // handlers
-  const handleSubmit = (variables) => updateNudge(variables).then(() => history.push(DashboardPath));
+  const handleSubmit = (args) => updateNudge(args).then(() => history.push(DashboardPath));
 
   if (loading) return 'Loading...';
   if (error) return 'Error!';

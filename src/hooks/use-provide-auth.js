@@ -12,8 +12,8 @@ export const useProvideAuth = () => {
   /**
    * Login and stores the JWT in localStorage.
    */
-  const login = (variables) => (
-    loginMutation(variables)
+  const login = (args) => (
+    loginMutation(args)
       .then(({ data }) => {
         window.localStorage.setItem(STORAGE_AUTH_KEY, data.login.jwt);
         history.push(DashboardPath);
@@ -30,8 +30,8 @@ export const useProvideAuth = () => {
   /**
    * Create a user and stores the JWT in localStorage.
    */
-  const signup = (variables) => (
-    createUserMutation(variables)
+  const signup = (args) => (
+    createUserMutation(args)
       .then(({ data }) => {
         window.localStorage.setItem(STORAGE_AUTH_KEY, data.createUser.jwt);
         history.push(DashboardPath);

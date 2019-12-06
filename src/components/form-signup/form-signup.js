@@ -19,7 +19,7 @@ function FormSignup(props) {
   // handlers
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ email, password, name }).catch((error) => setErrorMessage(error.message));
+    onSubmit({ variables: { email, password, name } }).catch((error) => setErrorMessage(error.message));
   };
 
   return (

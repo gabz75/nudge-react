@@ -37,7 +37,7 @@ function Dashboard(props) {
     history.push(LoginPath);
   };
   const handleDelete = async (nudge) => {
-    await deleteNudge({ id: nudge.id });
+    await deleteNudge({ variables: { id: nudge.id } });
     refetch();
   };
 

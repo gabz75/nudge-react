@@ -24,10 +24,12 @@ function FormNudge(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({
-      id: nudge.id,
-      name,
-      color,
-      public: _public,
+      variables: {
+        id: nudge.id,
+        name,
+        color,
+        public: _public,
+      },
     }).catch((error) => setErrorMessage(error.message));
   };
 
