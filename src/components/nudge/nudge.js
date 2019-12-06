@@ -4,11 +4,14 @@ import Moment from 'react-moment';
 import { useHistory } from 'react-router-dom';
 
 import Button from '../button';
-import { path as nudgeUpdatePath } from '../../routes/nudge/update';
-import { path as nudgeDeletePath } from '../../routes/nudge/delete';
+import { pathFor as nudgeUpdatePath } from '../../routes/nudge/update';
 import { useClassNameHelper } from '../../hooks/use-class-name-helper';
 
-function Nudge({ nudge }) {
+function Nudge({ nudge, ...otherProps }) {
+  // props
+  const { onDelete } = otherProps;
+
+  // hooks
   const history = useHistory();
   const ch = useClassNameHelper()
     .register('color', [
@@ -21,8 +24,9 @@ function Nudge({ nudge }) {
       'mr-2',
     ]);
 
+  // handlers
   const handleEdit = () => history.push(nudgeUpdatePath(nudge.id));
-  const handleDelete = () => history.push(nudgeDeletePath(nudge.id));
+  const handleDelete = () => onDelete(nudge);
 
   return (
     <div className="flex items-center">
@@ -43,11 +47,16 @@ Nudge.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     color: PropTypes.string,
-    archived: PropTypes.string,
-    public: PropTypes.string,
+    archived: PropTypes.bool,
+    public: PropTypes.bool,
     createdAt: PropTypes.string,
     updatedAt: PropTypes.string,
   }).isRequired,
+  onDelete: PropTypes.func,
+};
+
+Nudge.defaultProps = {
+  onDelete: () => {},
 };
 
 export default Nudge;

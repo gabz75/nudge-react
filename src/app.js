@@ -18,7 +18,6 @@ import DashboardRoute from './routes/dashboard';
 
 import NudgeNewRoute from './routes/nudge/new';
 import NudgeUpdateRoute from './routes/nudge/update';
-import NudgeDeleteRoute from './routes/nudge/delete';
 
 import { STORAGE_AUTH_KEY } from './hooks/use-provide-auth';
 
@@ -41,14 +40,13 @@ function App() {
         <Switch>
           <ProvideAuth>
             <Route exact path="/">
-              <Redirect push to="/login" />
+              <Redirect push to={LoginRoute.path} />
             </Route>
             <UnauthenticatedRoute path={LoginRoute.path} component={LoginRoute} />
             <UnauthenticatedRoute path={SignupRoute.path} component={SignupRoute} />
             <ProtectedRoute path={DashboardRoute.path} component={DashboardRoute} />
             <ProtectedRoute path={NudgeNewRoute.path} component={NudgeNewRoute} />
             <ProtectedRoute path={NudgeUpdateRoute.path} component={NudgeUpdateRoute} />
-            <ProtectedRoute path={NudgeDeleteRoute.path} component={NudgeDeleteRoute} />
           </ProvideAuth>
         </Switch>
       </BrowserRouter>

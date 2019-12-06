@@ -1,79 +1,36 @@
 import { gql } from 'apollo-boost';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
 
-/**
- * Queries
- */
-const GET_NUDGES = gql`
-  {
-    getNudges {
-      id
-      name
-      color
-      archived
-      public
-      createdAt
-      updatedAt
-    }
-  }
-`;
+import MutationCreateNudge from '../graphql/mutations/create-nudge';
+import MutationCreateUser from '../graphql/mutations/create-user';
+import MutationDeleteNudge from '../graphql/mutations/delete-nudge';
+import MutationLogin from '../graphql/mutations/login';
+import MutationUpdateNudge from '../graphql/mutations/update-nudge';
 
-/**
- * Mutations
- */
-
-const CREATE_NUDGE_MUTATION = gql`
-  mutation createNudge($name: String!, $color: String!, $public: Boolean) {
-    createNudge(name: $name, color: $color, public: $public) {
-      id
-      name
-      color
-      archived
-      public
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
-const CREATE_USER_MUTATION = gql`
-  mutation login($email: String!, $password: String!, $name: String!) {
-    createUser(email: $email, password: $password, name: $name) {
-      id
-      email
-      name
-      jwt
-    }
-  }
-`;
-
-const LOGIN_MUTATION = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      id
-      email
-      name
-      jwt
-    }
-  }
-`;
+import useGetNudge from './queries/use-get-nudge';
+import useGetNudges from './queries/use-get-nudges';
 
 export const useNudgeApi = () => {
-  const [createNudgeMutation] = useMutation(CREATE_NUDGE_MUTATION);
-  const [createUserMutation] = useMutation(CREATE_USER_MUTATION);
-  const [loginMutation] = useMutation(LOGIN_MUTATION);
-  const getNudgesQuery = useQuery(GET_NUDGES);
+  const [createNudgeMutation] = useMutation(gql(MutationCreateNudge));
+  const [createUserMutation] = useMutation(gql(MutationCreateUser));
+  const [deleteNudgeMutation] = useMutation(gql(MutationDeleteNudge));
+  const [loginMutation] = useMutation(gql(MutationLogin));
+  const [updateNudgeMutation] = useMutation(gql(MutationUpdateNudge));
 
   const createNudge = (variables) => createNudgeMutation({ variables });
   const createUser = (variables) => createUserMutation({ variables });
-  const getNudges = () => getNudgesQuery;
+  const deleteNudge = (variables) => deleteNudgeMutation({ variables });
   const login = (variables) => loginMutation({ variables });
+  const updateNudge = (variables) => updateNudgeMutation({ variables });
 
   return {
     createNudge,
     createUser,
-    getNudges,
+    deleteNudge,
     login,
+    updateNudge,
+    getNudge: useGetNudge,
+    getNudges: useGetNudges,
   };
 };
 
