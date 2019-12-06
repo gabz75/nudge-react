@@ -17,8 +17,11 @@ function Dashboard(props) {
   // hooks
   const { logout } = useAuth();
   const history = useHistory();
-  const { getNudges } = useNudgeApi();
-  const { loading, error, data } = getNudges();
+  const { getNudges, deleteNudge } = useNudgeApi();
+  const {
+    loading, error, data, refetch, networkStatus,
+  } = getNudges({ notifyOnNetworkStatusChange: true, fetchPolicy: 'cache-and-network' });
+
   const ch = useClassNameHelper()
     .register('container', [
       'border',
@@ -33,7 +36,12 @@ function Dashboard(props) {
     logout();
     history.push(LoginPath);
   };
+  const handleDelete = async (nudge) => {
+    await deleteNudge({ variables: { id: nudge.id } });
+    refetch();
+  };
 
+  if (networkStatus === 4) return 'Refetching!';
   if (loading) return 'Loading...';
   if (error) return <Button label="Log out" onClick={logoutAndRedirect} />;
 
@@ -41,7 +49,7 @@ function Dashboard(props) {
     <div className={ch.get('container', className)}>
       {
         data.getNudges.map((nudge) => (
-          <Nudge key={nudge.id} nudge={nudge} />
+          <Nudge key={nudge.id} nudge={nudge} onDelete={handleDelete} />
         ))
       }
       <hr className="my-2" />

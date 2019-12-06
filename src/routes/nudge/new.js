@@ -11,7 +11,7 @@ function NewNudge() {
   const { createNudge } = useNudgeApi();
   const history = useHistory();
 
-  const handleSubmit = (variables) => createNudge(variables).then(() => history.push(DashboardPath));
+  const handleSubmit = (variables) => createNudge({ variables }).then(() => history.push(DashboardPath));
 
   return (
     <div className="mt-32 flex justify-center items-center">

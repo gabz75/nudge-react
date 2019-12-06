@@ -18,7 +18,7 @@ function FormLogin(props) {
   // handlers
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ email, password }).catch((error) => setErrorMessage(error.message));
+    onSubmit({ variables: { email, password } }).catch((error) => setErrorMessage(error.message));
   };
 
   return (
