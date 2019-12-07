@@ -10,6 +10,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 import ProvideAuth from './components/provide-auth';
 
+import Navbar from './components/navbar';
 import UnauthenticatedRoute from './components/unauthenticated-route';
 import ProtectedRoute from './components/protected-route';
 import LoginRoute from './routes/login';
@@ -39,6 +40,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <ProvideAuth>
+            <Navbar />
             <Route exact path="/">
               <Redirect push to={LoginRoute.path} />
             </Route>
