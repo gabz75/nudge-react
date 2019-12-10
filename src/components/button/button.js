@@ -38,7 +38,12 @@ function Button(props) {
     ], CLASS_NAMES_SIZE_MAPPING[size]);
 
   return (
-    <button type={type} onClick={onClick} className={children ? className : ch.get('btn', className)}>
+    <button
+      data-testid="button"
+      type={type}
+      onClick={onClick}
+      className={children ? className : ch.get('btn', className)}
+    >
       {children || label}
     </button>
   );
