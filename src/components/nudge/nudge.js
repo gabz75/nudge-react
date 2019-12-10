@@ -10,9 +10,9 @@ import Button from '../button';
 import { pathFor as nudgeUpdatePath } from '../../routes/nudge/update';
 import { useClassNameHelper } from '../../hooks/use-class-name-helper';
 
-function Nudge({ nudge, ...otherProps }) {
+function Nudge({ nudge, ...props }) {
   // props
-  const { onDelete, className } = otherProps;
+  const { onDelete, className } = props;
   const [hoverOn, setHoverOn] = useState(false);
 
   // hooks

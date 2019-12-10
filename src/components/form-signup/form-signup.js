@@ -24,7 +24,7 @@ function FormSignup(props) {
 
   return (
     <div className={className}>
-      <form onSubmit={handleSubmit} className="flex flex-col border-2 border-gray-400 bg-white p-4 rounded">
+      <form onSubmit={handleSubmit} className="flex flex-col border border-gray-400 bg-white p-4">
         <Input type="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />

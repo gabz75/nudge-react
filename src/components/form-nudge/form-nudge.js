@@ -35,7 +35,7 @@ function FormNudge(props) {
 
   return (
     <div className={className}>
-      <form onSubmit={handleSubmit} className="flex flex-col border-2 border-gray-400 bg-white p-4 rounded">
+      <form onSubmit={handleSubmit} className="flex flex-col border border-gray-400 bg-white p-4">
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <Input type="text" label="Color" value={color} onChange={(e) => setColor(e.target.value)} />
         <Checkbox label="Public" checked={_public} onChange={(e) => setPublic(e.target.checked)} />
