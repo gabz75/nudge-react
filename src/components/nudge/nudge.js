@@ -45,7 +45,6 @@ function Nudge({ nudge, ...props }) {
       <span className="py-4 flex-grow">{nudge.name}</span>
       <span className="px-4  text-gray-600">{nudge.public && <Octicon icon={Globe} />}</span>
       <Moment className="px-4 lowercase text-xs text-gray-700" date={nudge.createdAt} format="d MMM." />
-      <Moment className="px-4 lowercase text-xs text-gray-700" date={nudge.updatedAt} format="d MMM." />
       {
         hoverOn && (
           <div className="bg-gray-400 h-100 self-stretch flex items-center justify-center px-4">

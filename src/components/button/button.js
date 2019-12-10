@@ -28,11 +28,11 @@ function Button(props) {
   // hooks
   const ch = useClassNameHelper()
     .register('btn', [
-      'bg-blue-500',
+      'bg-cta',
       'hover:bg-blue-400',
       'text-white',
       'border-b-4',
-      'border-blue-700',
+      'border-yellow-1',
       'hover:border-blue-500',
       'rounded',
     ], CLASS_NAMES_SIZE_MAPPING[size]);

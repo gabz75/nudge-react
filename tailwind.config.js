@@ -15,6 +15,8 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      cta: '#64C4ED',
+
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -294,6 +296,7 @@ module.exports = {
       widest: '0.1em',
     },
     lineHeight: {
+      zero: '0',
       none: '1',
       tight: '1.25',
       snug: '1.375',

@@ -15,6 +15,7 @@ function Dropdown({ children, ...props }) {
   const ch = useClassNameHelper()
     .register('container', [
       'relative',
+      'leading-zero',
     ]);
   const dropdownContext = useDropdown();
 
