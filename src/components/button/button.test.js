@@ -63,7 +63,7 @@ describe('prop `size`', () => {
 });
 
 describe('prop `onClick`', () => {
-  it('execute a callback', () => {
+  it('executes a callback', () => {
     const onClickHandler = jest.fn();
     const { getByTestId } = render(<Button onClick={onClickHandler} />);
     getByTestId('button').click();
