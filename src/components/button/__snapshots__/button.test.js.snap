@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`prop \`label\` renders with label="Ok 1`] = `
+<DocumentFragment>
+  <button
+    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    data-testid="button"
+    type="button"
+  >
+    Ok
+  </button>
+</DocumentFragment>
+`;
+
+exports[`prop \`label\` renders with label="Submit 1`] = `
+<DocumentFragment>
+  <button
+    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    data-testid="button"
+    type="button"
+  >
+    Submit
+  </button>
+</DocumentFragment>
+`;
+
+exports[`prop \`size\` renders for \`md\` 1`] = `
+<DocumentFragment>
+  <button
+    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    data-testid="button"
+    type="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`prop \`size\` renders for \`sm\` 1`] = `
+<DocumentFragment>
+  <button
+    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-1 px-2 text-xs font-bold"
+    data-testid="button"
+    type="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`prop \`type\` renders with type="button" 1`] = `
+<DocumentFragment>
+  <button
+    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    data-testid="button"
+    type="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`prop \`type\` renders with type="submit" 1`] = `
+<DocumentFragment>
+  <button
+    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    data-testid="button"
+    type="submit"
+  />
+</DocumentFragment>
+`;
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <button
+    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    data-testid="button"
+    type="button"
+  />
+</DocumentFragment>
+`;
