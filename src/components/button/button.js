@@ -22,29 +22,30 @@ const CLASS_NAMES_SIZE_MAPPING = {
 function Button(props) {
   // props
   const {
-    className, type, size, onClick, label,
+    children, className, type, size, onClick, label,
   } = props;
 
   // hooks
   const ch = useClassNameHelper()
     .register('btn', [
-      'bg-blue-500',
+      'bg-cta',
       'hover:bg-blue-400',
       'text-white',
       'border-b-4',
-      'border-blue-700',
+      'border-yellow-1',
       'hover:border-blue-500',
       'rounded',
     ], CLASS_NAMES_SIZE_MAPPING[size]);
 
   return (
-    <button type={type} onClick={onClick} className={ch.get('btn', className)}>
-      {label}
+    <button type={type} onClick={onClick} className={children ? className : ch.get('btn', className)}>
+      {children || label}
     </button>
   );
 }
 
 Button.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
   label: PropTypes.string,
   onClick: PropTypes.func,
@@ -53,6 +54,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  children: undefined,
   className: undefined,
   label: undefined,
   onClick: () => {},

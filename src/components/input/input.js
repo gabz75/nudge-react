@@ -21,10 +21,9 @@ function Input(props) {
     ])
     .register('input', [
       'focus:outline-none',
-      'focus:border-gray-500',
+      'focus:border-indigo-500',
       'border',
       'border-gray-300',
-      'rounded-lg',
       'p-2',
       'inline-block',
       'w-full',

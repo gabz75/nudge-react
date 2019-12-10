@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-family: 'avenir';
+}
+
 body {
-  background-color: #718096;
+  background-color: #FCFAFA;
 }

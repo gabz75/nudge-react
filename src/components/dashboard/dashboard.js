@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import Octicon, { KebabVertical } from '@primer/octicons-react';
 
 import Nudge from '../nudge';
 import Button from '../button';
+import Dropdown from '../dropdown';
 import { PATH as LoginPath } from '../../routes/login';
 import { PATH as NudgeNewPath } from '../../routes/nudge/new';
 import { useAuth } from '../../hooks/use-auth';
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
 import { useNudgeApi } from '../../hooks/use-nudge-api';
+import { useClassNameHelper } from '../../hooks/use-class-name-helper';
 
 function Dashboard(props) {
   // props
@@ -21,14 +23,9 @@ function Dashboard(props) {
   const {
     loading, error, data, refetch, networkStatus,
   } = getNudges({ notifyOnNetworkStatusChange: true, fetchPolicy: 'cache-and-network' });
-
   const ch = useClassNameHelper()
     .register('container', [
-      'border',
-      'border-gray-400',
       'bg-white',
-      'p-4',
-      'rounded',
     ]);
 
   // handlers
@@ -47,16 +44,28 @@ function Dashboard(props) {
 
   return (
     <div className={ch.get('container', className)}>
-      {
-        data.getNudges.map((nudge) => (
-          <Nudge key={nudge.id} nudge={nudge} onDelete={handleDelete} />
-        ))
-      }
-      <hr className="my-2" />
-      <div className="flex items-center justify-end">
-        <Button label="Add a Nudge" onClick={() => history.push(NudgeNewPath)} />
+      <div className="bg-yellow-1 px-8 py-4 flex justify-between items-center text-white">
+        <h2 className="text-xl">Your goals</h2>
+        <Dropdown className="pl-32">
+          <Dropdown.Toggle>
+            <div className="w-8 h-8 flex items-center justify-center">
+              <Octicon icon={KebabVertical} />
+            </div>
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Link to={NudgeNewPath} className="text-black">Add a goal</Link>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
-      <Button label="Log out" className="inline-block" onClick={logoutAndRedirect} />
+      <div className="border border-t-0 p-4">
+        <div className="border">
+          {
+            data.getNudges.map((nudge, i) => (
+              <Nudge className={i > 0 ? 'border-t' : ''} key={nudge.id} nudge={nudge} onDelete={handleDelete} />
+            ))
+          }
+        </div>
+      </div>
     </div>
   );
 }
