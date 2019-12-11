@@ -13,11 +13,6 @@ module.exports = {
       "react": {
         "version": "detect",
       },
-      "import/resolver": {
-        "node": {
-          "paths": ["src"]
-        }
-      },
     },
     "ignorePatterns": [
       "src/index.js",
