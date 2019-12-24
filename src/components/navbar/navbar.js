@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { PATH as DashboardPath } from '../../routes/dashboard';
-import { PATH as LoginPath } from '../../routes/login';
+import { DashboardPath, LoginPath } from '../../routes';
 import Dropdown from '../dropdown';
 import { useAuth } from '../../hooks/use-auth';
 
