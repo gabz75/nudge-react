@@ -1,6 +1,6 @@
 export default `
   {
-    getNudges {
+    getGoals {
       id
       name
       color

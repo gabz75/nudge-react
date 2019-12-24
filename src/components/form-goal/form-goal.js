@@ -6,18 +6,18 @@ import Checkbox from '../checkbox';
 import Button from '../button';
 import FormError from '../form-error';
 
-function FormNudge(props) {
+function FormGoal(props) {
   // props
   const {
     className,
     onSubmit,
-    nudge,
+    goal,
   } = props;
 
   // hooks
-  const [name, setName] = useState(nudge.name);
-  const [color, setColor] = useState(nudge.color);
-  const [_public, setPublic] = useState(nudge.public);
+  const [name, setName] = useState(goal.name);
+  const [color, setColor] = useState(goal.color);
+  const [_public, setPublic] = useState(goal.public);
   const [errorMessage, setErrorMessage] = useState();
 
   // handlers
@@ -25,7 +25,7 @@ function FormNudge(props) {
     e.preventDefault();
     onSubmit({
       variables: {
-        id: nudge.id,
+        id: goal.id,
         name,
         color,
         public: _public,
@@ -46,10 +46,10 @@ function FormNudge(props) {
   );
 }
 
-FormNudge.propTypes = {
+FormGoal.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func,
-  nudge: PropTypes.shape({
+  goal: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
     color: PropTypes.string,
@@ -57,10 +57,10 @@ FormNudge.propTypes = {
   }),
 };
 
-FormNudge.defaultProps = {
+FormGoal.defaultProps = {
   onSubmit: () => {},
   className: undefined,
-  nudge: {},
+  goal: {},
 };
 
-export default FormNudge;
+export default FormGoal;

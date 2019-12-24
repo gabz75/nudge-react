@@ -1,6 +1,6 @@
 export default `
-  query getNudge($id: ID!) {
-    getNudge(id: $id) {
+  query getGoal($id: ID!) {
+    getGoal(id: $id) {
       id
       name
       color

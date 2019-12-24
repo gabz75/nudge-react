@@ -7,10 +7,10 @@ import Octicon, {
 import { useHistory } from 'react-router-dom';
 
 import Button from '../button';
-import { pathFor as nudgeUpdatePath } from '../../routes/nudge/update';
+import { pathFor as goalUpdatePath } from '../../routes/goal/update';
 import { useClassNameHelper } from '../../hooks/use-class-name-helper';
 
-function Nudge({ nudge, ...props }) {
+function Goal({ goal, ...props }) {
   // props
   const { onDelete, className } = props;
   const [hoverOn, setHoverOn] = useState(false);
@@ -31,8 +31,8 @@ function Nudge({ nudge, ...props }) {
     ]);
 
   // handlers
-  const handleEdit = () => history.push(nudgeUpdatePath(nudge.id));
-  const handleDelete = () => onDelete(nudge);
+  const handleEdit = () => history.push(goalUpdatePath(goal.id));
+  const handleDelete = () => onDelete(goal);
   const handleArchive = () => {};
 
   return (
@@ -41,10 +41,10 @@ function Nudge({ nudge, ...props }) {
       onMouseEnter={() => setHoverOn(true)}
       onMouseLeave={() => setHoverOn(false)}
     >
-      <span style={{ backgroundColor: nudge.color }} className={ch.get('color')} />
-      <span className="py-4 flex-grow">{nudge.name}</span>
-      <span className="px-4  text-gray-600">{nudge.public && <Octicon icon={Globe} />}</span>
-      <Moment className="px-4 lowercase text-xs text-gray-700" date={nudge.createdAt} format="d MMM." />
+      <span style={{ backgroundColor: goal.color }} className={ch.get('color')} />
+      <span className="py-4 flex-grow">{goal.name}</span>
+      <span className="px-4  text-gray-600">{goal.public && <Octicon icon={Globe} />}</span>
+      <Moment className="px-4 lowercase text-xs text-gray-700" date={goal.createdAt} format="d MMM." />
       {
         hoverOn && (
           <div className="bg-gray-400 h-100 self-stretch flex items-center justify-center px-4">
@@ -64,8 +64,8 @@ function Nudge({ nudge, ...props }) {
   );
 }
 
-Nudge.propTypes = {
-  nudge: PropTypes.shape({
+Goal.propTypes = {
+  goal: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
     color: PropTypes.string,
@@ -78,9 +78,9 @@ Nudge.propTypes = {
   className: PropTypes.string,
 };
 
-Nudge.defaultProps = {
+Goal.defaultProps = {
   onDelete: () => {},
   className: undefined,
 };
 
-export default Nudge;
+export default Goal;

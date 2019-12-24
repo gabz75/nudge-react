@@ -17,8 +17,8 @@ import LoginRoute from './routes/login';
 import SignupRoute from './routes/signup';
 import DashboardRoute from './routes/dashboard';
 
-import NudgeNewRoute from './routes/nudge/new';
-import NudgeUpdateRoute from './routes/nudge/update';
+import GoalNewRoute from './routes/goal/new';
+import GoalUpdateRoute from './routes/goal/update';
 
 import { STORAGE_AUTH_KEY } from './hooks/use-provide-auth';
 
@@ -47,8 +47,8 @@ function App() {
             <UnauthenticatedRoute path={LoginRoute.path} component={LoginRoute} />
             <UnauthenticatedRoute path={SignupRoute.path} component={SignupRoute} />
             <ProtectedRoute path={DashboardRoute.path} component={DashboardRoute} />
-            <ProtectedRoute path={NudgeNewRoute.path} component={NudgeNewRoute} />
-            <ProtectedRoute path={NudgeUpdateRoute.path} component={NudgeUpdateRoute} />
+            <ProtectedRoute path={GoalNewRoute.path} component={GoalNewRoute} />
+            <ProtectedRoute path={GoalUpdateRoute.path} component={GoalUpdateRoute} />
           </ProvideAuth>
         </Switch>
       </BrowserRouter>

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import Octicon, { KebabVertical } from '@primer/octicons-react';
 
-import Nudge from '../nudge';
+import Goal from '../goal';
 import Button from '../button';
 import Dropdown from '../dropdown';
 import { PATH as LoginPath } from '../../routes/login';
-import { PATH as NudgeNewPath } from '../../routes/nudge/new';
+import { PATH as GoalNewPath } from '../../routes/goal/new';
 import { useAuth } from '../../hooks/use-auth';
 import { useNudgeApi } from '../../hooks/use-nudge-api';
 import { useClassNameHelper } from '../../hooks/use-class-name-helper';
@@ -19,10 +19,10 @@ function Dashboard(props) {
   // hooks
   const { logout } = useAuth();
   const history = useHistory();
-  const { getNudges, deleteNudge } = useNudgeApi();
+  const { getGoals, deleteGoal } = useNudgeApi();
   const {
     loading, error, data, refetch, networkStatus,
-  } = getNudges({ notifyOnNetworkStatusChange: true, fetchPolicy: 'cache-and-network' });
+  } = getGoals({ notifyOnNetworkStatusChange: true, fetchPolicy: 'cache-and-network' });
   const ch = useClassNameHelper()
     .register('container', [
       'bg-white',
@@ -33,8 +33,8 @@ function Dashboard(props) {
     logout();
     history.push(LoginPath);
   };
-  const handleDelete = async (nudge) => {
-    await deleteNudge({ variables: { id: nudge.id } });
+  const handleDelete = async (goal) => {
+    await deleteGoal({ variables: { id: goal.id } });
     refetch();
   };
 
@@ -53,15 +53,15 @@ function Dashboard(props) {
             </div>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Link to={NudgeNewPath} className="text-black">Add a goal</Link>
+            <Link to={GoalNewPath} className="text-black">Add a goal</Link>
           </Dropdown.Menu>
         </Dropdown>
       </div>
       <div className="border border-t-0 p-4">
         <div className="border">
           {
-            data.getNudges.map((nudge, i) => (
-              <Nudge className={i > 0 ? 'border-t' : ''} key={nudge.id} nudge={nudge} onDelete={handleDelete} />
+            data.getGoals.map((goal, i) => (
+              <Goal className={i > 0 ? 'border-t' : ''} key={goal.id} goal={goal} onDelete={handleDelete} />
             ))
           }
         </div>

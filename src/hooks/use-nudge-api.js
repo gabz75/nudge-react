@@ -1,36 +1,36 @@
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 
-import MutationCreateNudge from '../graphql/mutations/create-nudge';
+import MutationCreateGoal from '../graphql/mutations/create-goal';
 import MutationCreateUser from '../graphql/mutations/create-user';
-import MutationDeleteNudge from '../graphql/mutations/delete-nudge';
+import MutationDeleteGoal from '../graphql/mutations/delete-goal';
 import MutationLogin from '../graphql/mutations/login';
-import MutationUpdateNudge from '../graphql/mutations/update-nudge';
+import MutationUpdateGoal from '../graphql/mutations/update-goal';
 
-import useGetNudge from './queries/use-get-nudge';
-import useGetNudges from './queries/use-get-nudges';
+import useGetGoal from './queries/use-get-goal';
+import useGetGoals from './queries/use-get-goals';
 
 export const useNudgeApi = () => {
-  const [createNudgeMutation] = useMutation(gql(MutationCreateNudge));
+  const [createGoalMutation] = useMutation(gql(MutationCreateGoal));
   const [createUserMutation] = useMutation(gql(MutationCreateUser));
-  const [deleteNudgeMutation] = useMutation(gql(MutationDeleteNudge));
+  const [deleteGoalMutation] = useMutation(gql(MutationDeleteGoal));
   const [loginMutation] = useMutation(gql(MutationLogin));
-  const [updateNudgeMutation] = useMutation(gql(MutationUpdateNudge));
+  const [updateGoalMutation] = useMutation(gql(MutationUpdateGoal));
 
-  const createNudge = (args) => createNudgeMutation(args);
+  const createGoal = (args) => createGoalMutation(args);
   const createUser = (args) => createUserMutation(args);
-  const deleteNudge = (args) => deleteNudgeMutation(args);
+  const deleteGoal = (args) => deleteGoalMutation(args);
   const login = (args) => loginMutation(args);
-  const updateNudge = (args) => updateNudgeMutation(args);
+  const updateGoal = (args) => updateGoalMutation(args);
 
   return {
-    createNudge,
+    createGoal,
     createUser,
-    deleteNudge,
+    deleteGoal,
     login,
-    updateNudge,
-    getNudge: useGetNudge,
-    getNudges: useGetNudges,
+    updateGoal,
+    getGoal: useGetGoal,
+    getGoals: useGetGoals,
   };
 };
 
