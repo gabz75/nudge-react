@@ -21,3 +21,5 @@ jobs:
     - name: Run Jest
       run:
         yarn test
+      env:
+        CI: true
