@@ -1,23 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
-
-const CLASS_NAMES_SIZE_MAPPING = {
-  sm: [
-    'py-1',
-    'px-2',
-    'text-xs',
-    'font-bold',
-  ],
-
-  md: [
-    'py-2',
-    'px-4',
-    'text-sm',
-    'font-bold',
-  ],
-};
+import { ButtonTagFor } from './button.styles';
 
 function Button(props) {
   // props
@@ -25,27 +8,17 @@ function Button(props) {
     children, className, type, size, onClick, label,
   } = props;
 
-  // hooks
-  const ch = useClassNameHelper()
-    .register('btn', [
-      'bg-cta',
-      'hover:bg-blue-400',
-      'text-white',
-      'border-b-4',
-      'border-yellow-1',
-      'hover:border-blue-500',
-      'rounded',
-    ], CLASS_NAMES_SIZE_MAPPING[size]);
+  const ButtonTag = ButtonTagFor(size);
 
   return (
-    <button
+    <ButtonTag
       data-testid="button"
       type={type}
       onClick={onClick}
-      className={children ? className : ch.get('btn', className)}
+      className={className}
     >
       {children || label}
-    </button>
+    </ButtonTag>
   );
 }
 
