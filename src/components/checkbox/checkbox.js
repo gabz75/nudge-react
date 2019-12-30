@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
-
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
+import tw from 'tailwind.macro';
 
 function Checkbox(props) {
   // props
@@ -10,27 +10,36 @@ function Checkbox(props) {
     checked, className, label, onChange,
   } = props;
 
-  // hooks
-  const ch = useClassNameHelper()
-    .register('container', [
-      'py-2',
-      'flex',
-      'items-center',
-    ])
-    .register('label', [
-      'mr-2',
-    ]);
+  const Container = styled.div`
+    ${tw`py-2 flex items-center`};
+  `;
+  const Label = styled.label`
+    ${tw`flex items-center relative cursor-pointer`};
+    input:checked ~ span {
+      background-color: blue;
+    }
+
+    &:hover input ~ span {
+      ${tw`border-gray-900`};
+    }
+
+  `;
+  const inputCss = tw`absolute opacity-0`;
+  const CustomCheckbox = styled.span`
+    ${tw`ml-2 w-6 h-6 border border-solid border-gray-400`};
+  `;
 
   const [id] = useState(() => uniqueId('input-'));
 
   return (
-    <div className={ch.get('container', className)}>
-      <label htmlFor={id} className={ch.get('label')}>
+    <Container className={className}>
+      <Label htmlFor={id}>
         {label}
         :
-      </label>
-      <input id={id} type="checkbox" checked={checked} onChange={onChange} />
-    </div>
+        <input id={id} css={inputCss} type="checkbox" checked={checked} onChange={onChange} />
+        <CustomCheckbox />
+      </Label>
+    </Container>
   );
 }
 

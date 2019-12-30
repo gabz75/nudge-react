@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/tailwind.css';
+import { Normalize } from 'styled-normalize'
 import './styles/index.css';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Root = () => (
+  <React.Fragment>
+    <Normalize />
+    <App />
+  </React.Fragment>
+);
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
 
 import FormGoal from '../../components/form-goal';
 import { PATH as DashboardPath } from '../dashboard';
@@ -14,8 +16,8 @@ function NewGoal() {
   const handleSubmit = (variables) => createGoal({ variables }).then(() => history.push(DashboardPath));
 
   return (
-    <div className="mt-32 flex justify-center items-center">
-      <FormGoal className="w-1/4" onSubmit={handleSubmit} />
+    <div css={tw`mt-32 flex justify-center items-center`}>
+      <FormGoal css={tw`w-1/4`} onSubmit={handleSubmit} />
     </div>
   );
 }

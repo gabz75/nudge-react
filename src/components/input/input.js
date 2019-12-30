@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
-
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
+import styled from 'styled-components/macro';
+import tw from 'tailwind.macro';
 
 function Input(props) {
   // props
@@ -11,36 +11,35 @@ function Input(props) {
   } = props;
 
   // hooks
-  const ch = useClassNameHelper()
-    .register('label', [
-      'py-2',
-      'inline-block',
-      'w-full',
-      'appearance-none',
-      'leading-normal',
-    ])
-    .register('input', [
-      'focus:outline-none',
-      'focus:border-indigo-500',
-      'border',
-      'border-gray-300',
-      'p-2',
-      'inline-block',
-      'w-full',
-      'appearance-none',
-      'leading-normal',
-    ]);
-
   const [id] = useState(() => uniqueId('input-'));
 
+  const Container = styled.label`
+    ${tw`flex flex-col`};
+  `;
+  const Label = styled.label`
+    ${tw`py-2 inline-block w-full appearance-none leading-normal`};
+  `;
+
+  const inputCss = tw`
+    focus:outline-none
+    focus:border-indigo-500
+    border
+    border-solid
+    border-gray-300
+    py-2
+    inline-block
+    appearance-none
+    leading-normal
+  `;
+
   return (
-    <div className={className}>
-      <label htmlFor={id} className={ch.get('label')}>
+    <Container className={className}>
+      <Label htmlFor={id}>
         {label}
         :
-      </label>
-      <input id={id} type={type} value={value} onChange={onChange} className={ch.get('input')} />
-    </div>
+      </Label>
+      <input css={inputCss} id={id} type={type} value={value} onChange={onChange} />
+    </Container>
   );
 }
 
