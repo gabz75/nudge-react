@@ -7,8 +7,9 @@ import MutationDeleteGoal from '../graphql/mutations/delete-goal';
 import MutationLogin from '../graphql/mutations/login';
 import MutationUpdateGoal from '../graphql/mutations/update-goal';
 
-import useGetGoal from './queries/use-get-goal';
-import useGetGoals from './queries/use-get-goals';
+import getGoal from './queries/use-get-goal';
+import getGoals from './queries/use-get-goals';
+import getGoalTypes from './queries/use-get-goal-types';
 
 export const useNudgeApi = () => {
   const [createGoalMutation] = useMutation(gql(MutationCreateGoal));
@@ -29,8 +30,9 @@ export const useNudgeApi = () => {
     deleteGoal,
     login,
     updateGoal,
-    getGoal: useGetGoal,
-    getGoals: useGetGoals,
+    getGoal,
+    getGoals,
+    getGoalTypes,
   };
 };
 

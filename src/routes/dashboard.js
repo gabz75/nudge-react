@@ -7,7 +7,7 @@ export const PATH = '/dashboard';
 function DashboardRoute() {
   return (
     <div className="mt-8 flex justify-center items-center">
-      <Dashboard className="w-2/3 xl:w-1/4" />
+      <Dashboard className="lg:w-2/3 xl:w-2/3" />
     </div>
   );
 }

@@ -23,6 +23,10 @@ function Navbar() {
   return (
     <nav className="bg-blue-1 w-full h-16 flex justify-center">
       <div className="w-2/3 xl:w-1/4 flex items-center justify-end">
+        <div className="text-sm mr-2 block md:hidden lg:hidden xl:hidden">sm</div>
+        <div className="text-sm mr-2 hidden md:block lg:hidden xl:hidden">md</div>
+        <div className="text-sm mr-2 hidden md:hidden lg:block xl:hidden">lg</div>
+        <div className="text-sm mr-2 hidden md:hidden lg:hidden xl:block">xl</div>
         <Dropdown>
           <Dropdown.Toggle>
             <div className="bg-green-500 h-8 w-8 rounded-full" />

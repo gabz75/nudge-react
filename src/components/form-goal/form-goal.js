@@ -5,6 +5,7 @@ import Input from '../input';
 import Checkbox from '../checkbox';
 import Button from '../button';
 import FormError from '../form-error';
+import { useNudgeApi } from '../../hooks/use-nudge-api';
 
 function FormGoal(props) {
   // props
@@ -18,7 +19,14 @@ function FormGoal(props) {
   const [name, setName] = useState(goal.name);
   const [color, setColor] = useState(goal.color);
   const [_public, setPublic] = useState(goal.public);
+  const [goalTypeDescription, setGoalTypeDescription] = useState();
   const [errorMessage, setErrorMessage] = useState();
+  const { getGoalTypes } = useNudgeApi();
+
+  const {
+    data,
+  } = getGoalTypes({ notifyOnNetworkStatusChange: true, fetchPolicy: 'cache-and-network' });
+
 
   // handlers
   const handleSubmit = (e) => {
@@ -39,7 +47,31 @@ function FormGoal(props) {
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <Input type="text" label="Color" value={color} onChange={(e) => setColor(e.target.value)} />
         <Checkbox label="Public" checked={_public} onChange={(e) => setPublic(e.target.checked)} />
+
+        <h2 className="">Type of goal :</h2>
+        <div className="flex justify-center py-2">
+          {
+            data && data.getGoalTypes.map((goalType) => (
+              <Button
+                key={goalType.id}
+                label={goalType.friendlyName}
+                className="mr-2"
+                onClick={() => setGoalTypeDescription(goalType.description)}
+              />
+            ))
+          }
+        </div>
+        {
+          goalTypeDescription && (
+            <p className="border border-yellow-1 p-2 mb-4">
+              {goalTypeDescription}
+            </p>
+          )
+        }
+
+
         <Button label="Submit" type="submit" />
+
         { errorMessage && <FormError message={errorMessage} className="mt-4" />}
       </form>
     </div>

@@ -27,7 +27,7 @@ function GoalUpdate(props) {
   if (error) return 'Error!';
 
   return (
-    <div className="mt-32 flex flex-col justify-center items-center">
+    <div className="mt-8 flex flex-col justify-center items-center">
       <FormGoal className="w-1/4" goal={data.getGoal} onSubmit={handleSubmit} />
       <Link to={DashboardPath}>back to Dashboard</Link>
     </div>

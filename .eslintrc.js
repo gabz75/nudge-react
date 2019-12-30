@@ -3,7 +3,8 @@ module.exports = {
       "airbnb",
     ],
     "plugins": [
-      "jest"
+      "jest",
+      "emotion",
     ],
     "env": {
       browser: true,

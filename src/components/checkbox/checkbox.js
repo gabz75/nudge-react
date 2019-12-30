@@ -1,6 +1,9 @@
+/** @jsx jsx */
+import { styled } from '@emotion/styled';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
+import tw from 'tailwind.macro';
 
 import { useClassNameHelper } from '../../hooks/use-class-name-helper';
 
@@ -19,17 +22,40 @@ function Checkbox(props) {
     ])
     .register('label', [
       'mr-2',
+      'relative',
+    ])
+    .register('input', [
+      'absolute',
+      'h-0',
+      'w-0',
+      'cursor-pointer',
+      'opacity-0',
+    ])
+    .register('checkmark', [
+      'absolute',
+      'w-4',
+      'h-4',
+      'bg-gray-500',
+      'hover:bg-blue-500',
+      'checked:bg-red-500',
     ]);
+
+  const Label = tw.label`
+    mr-4 relative
+  `;
+
+  console.log(Label);
 
   const [id] = useState(() => uniqueId('input-'));
 
   return (
     <div className={ch.get('container', className)}>
-      <label htmlFor={id} className={ch.get('label')}>
+      <Label htmlFor={id}>
         {label}
         :
-      </label>
-      <input id={id} type="checkbox" checked={checked} onChange={onChange} />
+        <input id={id} className={ch.get('input')} type="checkbox" checked={checked} onChange={onChange} />
+        <span className={ch.get('checkmark')} />
+      </Label>
     </div>
   );
 }

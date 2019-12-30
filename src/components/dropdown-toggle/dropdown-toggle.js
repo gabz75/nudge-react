@@ -18,7 +18,7 @@ function DropdownToggle({ children, ...props }) {
     ]);
 
   useOnClickOutside(ref, () => {
-    setTimeout(() => dropdownContext.closeDropdown()); // @todo why setTimeout?
+    // setTimeout(() => dropdownContext.closeDropdown()); // @todo why setTimeout?
   });
 
   return (

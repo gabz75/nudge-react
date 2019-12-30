@@ -36,8 +36,7 @@ function Input(props) {
   return (
     <div className={className}>
       <label htmlFor={id} className={ch.get('label')}>
-        {label}
-        :
+        {label} :
       </label>
       <input id={id} type={type} value={value} onChange={onChange} className={ch.get('input')} />
     </div>

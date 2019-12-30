@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import WebFont from 'webfontloader';
 import './styles/tailwind.css';
 import './styles/index.css';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
+
+WebFont.load({
+  google: {
+    families: ['Poppins:300,400,700', 'sans-serif']
+  }
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
