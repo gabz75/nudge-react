@@ -40,9 +40,9 @@ function FormGoal(props) {
       <form onSubmit={handleSubmit} css={tw`flex flex-col border border-solid border-gray-400 bg-white p-4`}>
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <Input type="text" label="Color" value={color} onChange={(e) => setColor(e.target.value)} />
-        <Checkbox label="Public" checked={_public} onChange={(e) => setPublic(e.target.checked)} />
+        <Checkbox label="Public" checked={goal.public} onChange={(e) => setPublic(e.target.checked)} />
         <Button label="Submit" type="submit" css={tw`self-end`} />
-        { errorMessage && <FormError message={errorMessage} className="mt-4" />}
+        { errorMessage && <FormError message={errorMessage} css={tw`mt-4`} />}
       </form>
     </div>
   );

@@ -16,7 +16,7 @@ function NewGoal() {
   const handleSubmit = (variables) => createGoal({ variables }).then(() => history.push(DashboardPath));
 
   return (
-    <div css={tw`mt-32 flex justify-center items-center`}>
+    <div css={tw`mt-8 flex justify-center items-center`}>
       <FormGoal css={tw`w-1/4`} onSubmit={handleSubmit} />
     </div>
   );

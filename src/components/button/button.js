@@ -12,6 +12,7 @@ function Button(props) {
 
   return (
     <ButtonTag
+      size={size}
       data-testid="button"
       type={type}
       onClick={onClick}

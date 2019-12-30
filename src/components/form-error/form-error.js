@@ -1,31 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
+import styled from 'styled-components/macro';
+import tw from 'tailwind.macro';
 
 function FormError(props) {
   // props
   const { className, message } = props;
 
-  // hooks
-  const ch = useClassNameHelper()
-    .register('root', [
-      'border',
-      'border-red-500',
-      'text-red-500',
-      'p-2',
-      'text-sm',
-      'rounded',
-      'relative',
-      'flex',
-      'justify-between',
-      'items-center',
-    ]);
+  const Div = styled.div`
+    ${tw`
+      border
+      border-solid
+      border-red-500
+      text-red-500
+      p-2
+      text-sm
+      rounded
+      relative
+      flex
+      justify-between
+      items-center
+    `};
+  `;
 
   return (
-    <div className={ch.get('root', className)} role="alert">
-      <span className="block">{message}</span>
-    </div>
+    <Div className={className} role="alert">
+      <span css={tw`block`}>{message}</span>
+    </Div>
   );
 }
 

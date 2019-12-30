@@ -2,8 +2,8 @@ import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import DropdownContext from '../../contexts/dropdown';
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
 import { useOnClickOutside } from '../../hooks/use-on-click-outside';
+import { Button } from './dropdown-toggle.styles';
 
 function DropdownToggle({ children, ...props }) {
   // props
@@ -12,19 +12,15 @@ function DropdownToggle({ children, ...props }) {
   // hooks
   const ref = useRef();
   const dropdownContext = useContext(DropdownContext);
-  const ch = useClassNameHelper()
-    .register('button', [
-      'focus:outline-none',
-    ]);
 
   useOnClickOutside(ref, () => {
     setTimeout(() => dropdownContext.closeDropdown()); // @todo why setTimeout?
   });
 
   return (
-    <button ref={ref} className={ch.get('button', className)} onClick={() => dropdownContext.toggleDropdown()}>
+    <Button ref={ref} className={className} onClick={() => dropdownContext.toggleDropdown()}>
       {children}
-    </button>
+    </Button>
   );
 }
 

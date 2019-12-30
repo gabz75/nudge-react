@@ -3,6 +3,7 @@ import tw from 'tailwind.macro';
 
 export const DefaultButtonTag = styled.button`
   ${tw`
+    focus:outline-none
     bg-blue-500
     hover:bg-blue-400
     text-white

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import styled from 'styled-components/macro';
+import tw from 'tailwind.macro';
 
 import { DashboardPath, LoginPath } from '../../routes';
 import Dropdown from '../dropdown';
@@ -10,6 +12,14 @@ function Navbar() {
   const history = useHistory();
   const { isAuthenticated, logout } = useAuth();
 
+  const Button = styled.button`
+    :focus { outline: none; }
+    border: none;
+    background: none;
+    cursor: pointer;
+    ${tw`py-1`};
+  `;
+
   // handlers
   const handleLogout = () => {
     logout();
@@ -17,19 +27,19 @@ function Navbar() {
   };
 
   if (!isAuthenticated()) {
-    return <nav className="bg-blue-1 w-full h-16 flex justify-center" />;
+    return <nav css={tw`bg-blue-100 w-full h-16 flex justify-center`} />;
   }
 
   return (
-    <nav className="bg-blue-1 w-full h-16 flex justify-center">
-      <div className="w-2/3 xl:w-1/4 flex items-center justify-end">
+    <nav css={tw`bg-blue-100 w-full h-16 flex justify-center`}>
+      <div css={tw`w-2/3 xl:w-1/4 flex items-center justify-end`}>
         <Dropdown>
           <Dropdown.Toggle>
-            <div className="bg-green-500 h-8 w-8 rounded-full" />
+            <div css={tw`bg-green-500 h-8 w-8 rounded-full`} />
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Link className="py-1" to={DashboardPath}>Dashboard</Link>
-            <button className="py-1" onClick={handleLogout}>Logout</button>
+            <Link css={tw`py-1`} to={DashboardPath}>Dashboard</Link>
+            <Button onClick={handleLogout}>Logout</Button>
           </Dropdown.Menu>
         </Dropdown>
       </div>

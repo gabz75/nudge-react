@@ -1,29 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/macro';
+import tw from 'tailwind.macro';
 
 import DropdownToggle from '../dropdown-toggle';
 import DropdownMenu from '../dropdown-menu';
 import DropdownContext from '../../contexts/dropdown';
 import { useDropdown } from '../../hooks/use-dropdown';
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
+
+const Div = styled.div`
+  ${tw`relative leading-zero`};
+`;
 
 function Dropdown({ children, ...props }) {
   // props
   const { className } = props;
 
   // hooks
-  const ch = useClassNameHelper()
-    .register('container', [
-      'relative',
-      'leading-zero',
-    ]);
   const dropdownContext = useDropdown();
 
   return (
     <DropdownContext.Provider value={dropdownContext}>
-      <div className={ch.get('container', className)}>
+      <Div className={className}>
         { children }
-      </div>
+      </Div>
     </DropdownContext.Provider>
   );
 }

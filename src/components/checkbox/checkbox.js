@@ -6,7 +6,7 @@ import {
   Container,
   Label,
   CustomCheckbox,
-  inputCss,
+  CheckboxField,
 } from './checkbox.styles';
 
 
@@ -23,7 +23,7 @@ function Checkbox(props) {
       <Label htmlFor={id}>
         {label}
         :
-        <input id={id} css={inputCss} type="checkbox" checked={checked} onChange={onChange} />
+        <CheckboxField id={id} type="checkbox" checked={checked} onChange={onChange} />
         <CustomCheckbox />
       </Label>
     </Container>

@@ -12,17 +12,34 @@ export const Label = styled.label`
     ${tw`hidden`};
   }
 
-  input:checked ~ span {
-    background-color: blue;
+  &:hover input:not(:checked) ~ span:after {
+    ${tw`bg-gray-400`};
+    margin: 2px;
   }
 
-  &:hover input ~ span {
-    ${tw`border-gray-900`};
+  input:checked ~ span:after {
+    ${tw`bg-blue-500`};
   }
 `;
 
 export const CustomCheckbox = styled.span`
   ${tw`ml-2 w-6 h-6 border border-solid border-gray-400`};
+  position:relative;
+
+  :after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    margin: 2px;
+  }
 `;
 
-export const inputCss = tw`absolute opacity-0`;
+export const CheckboxField = styled.input`
+  position: absolute;
+  opacity: 0;
+`;
