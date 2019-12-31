@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 
+import { useOnClickOutside } from '../../hooks/use-on-click-outside';
 import DropdownToggle from '../dropdown-toggle';
 import DropdownMenu from '../dropdown-menu';
 import DropdownContext from '../../contexts/dropdown';
@@ -18,10 +19,13 @@ function Dropdown({ children, ...props }) {
 
   // hooks
   const dropdownContext = useDropdown();
+  const ref = useRef();
+
+  useOnClickOutside(ref, () => dropdownContext.closeDropdown());
 
   return (
     <DropdownContext.Provider value={dropdownContext}>
-      <Div className={className}>
+      <Div ref={ref} className={className}>
         { children }
       </Div>
     </DropdownContext.Provider>
