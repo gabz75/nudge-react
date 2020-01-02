@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Input from 'components/input';
-import FormError from 'components/form-error';
-import { Text, Link } from 'components/globals';
-import { Wrapper, StyledForm, StyledButton } from './style';
+import { SignupPath } from 'routes';
+import {
+  FlexCol,
+  Link,
+  StyledButton,
+  StyledForm,
+  StyledFormError,
+  StyledText,
+} from './style';
 
 function FormLogin(props) {
   // props
-  const { onSubmit, className, width } = props;
+  const { onSubmit, width } = props;
 
   // hooks
   const [email, setEmail] = useState();
@@ -22,31 +28,29 @@ function FormLogin(props) {
   };
 
   return (
-    <Wrapper className={className} width={width}>
+    <FlexCol width={width}>
       <StyledForm onSubmit={handleSubmit}>
         <Input type="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <StyledButton label="Login" type="submit" />
-        { errorMessage && <FormError mt="md" message={errorMessage} />}
+        { errorMessage && <StyledFormError message={errorMessage} />}
       </StyledForm>
 
-      <Text mt="md" mb="0" textAlign="center" fontSize="sm">
+      <StyledText>
         Don&apos;t have an account yet?&nbsp;
-        <Link to="/signup">Sign up</Link>
-      </Text>
-    </Wrapper>
+        <Link to={SignupPath}>Sign up</Link>
+      </StyledText>
+    </FlexCol>
   );
 }
 
 FormLogin.propTypes = {
   onSubmit: PropTypes.func,
-  className: PropTypes.string,
   width: PropTypes.arrayOf(PropTypes.number),
 };
 
 FormLogin.defaultProps = {
   onSubmit: () => {},
-  className: undefined,
   width: undefined,
 };
 

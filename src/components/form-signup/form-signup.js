@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-import Input from '../input';
-import Button from '../button';
-import FormError from '../form-error';
+import Input from 'components/input';
+import { LoginPath } from 'routes';
+import {
+  FlexCol,
+  Link,
+  StyledButton,
+  StyledForm,
+  StyledFormError,
+  StyledText,
+} from './style';
 
 function FormSignup(props) {
   // props
-  const { onSubmit, className } = props;
+  const { onSubmit, width } = props;
 
   // hooks
   const [email, setEmail] = useState();
@@ -23,32 +29,31 @@ function FormSignup(props) {
   };
 
   return (
-    <div className={className}>
-      <form onSubmit={handleSubmit} className="flex flex-col border border-gray-400 bg-white p-4">
+    <FlexCol width={width}>
+      <StyledForm onSubmit={handleSubmit}>
         <Input type="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <hr className="my-4" />
-        <Button label="Signup" type="submit" />
-        { errorMessage && <FormError message={errorMessage} className="mt-4" />}
-      </form>
+        <StyledButton label="Signup" type="submit" />
+        { errorMessage && <StyledFormError message={errorMessage} />}
+      </StyledForm>
 
-      <p className="text-xs mt-2 text-center">
-        Already have an account?&nbsp;
-        <Link to="/login" className="text-white underline">Log in</Link>
-      </p>
-    </div>
+      <StyledText>
+        Don&apos;t have an account yet?&nbsp;
+        <Link to={LoginPath}>Log in</Link>
+      </StyledText>
+    </FlexCol>
   );
 }
 
 FormSignup.propTypes = {
   onSubmit: PropTypes.func,
-  className: PropTypes.func,
+  width: PropTypes.arrayOf(PropTypes.number),
 };
 
 FormSignup.defaultProps = {
   onSubmit: () => {},
-  className: undefined,
+  width: undefined,
 };
 
 export default FormSignup;

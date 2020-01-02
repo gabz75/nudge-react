@@ -9,6 +9,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   border-radius: 2px;
   transition: all 0.4s ease 0s;
+  letter-spacing: 0.5px;
 
   &:focus {
     outline: none;
