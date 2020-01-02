@@ -1,41 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
+import { Box, Text } from 'components/globals';
 
 function FormError(props) {
   // props
-  const { className, message } = props;
-
-  // hooks
-  const ch = useClassNameHelper()
-    .register('root', [
-      'border',
-      'border-red-500',
-      'text-red-500',
-      'p-2',
-      'text-sm',
-      'rounded',
-      'relative',
-      'flex',
-      'justify-between',
-      'items-center',
-    ]);
+  const { className, mt, message } = props;
 
   return (
-    <div className={ch.get('root', className)} role="alert">
-      <span className="block">{message}</span>
-    </div>
+    <Box
+      role="alert"
+      padding="sm"
+      mt={mt}
+      color="red"
+      border="1px solid"
+      borderColor="red"
+      className={className}
+    >
+      <Text marginBottom="0" fontSize="sm">{message}</Text>
+    </Box>
   );
 }
 
 FormError.propTypes = {
   className: PropTypes.string,
+  mt: PropTypes.string,
   message: PropTypes.string,
 };
 
 FormError.defaultProps = {
   className: undefined,
+  mt: undefined,
   message: undefined,
 };
 

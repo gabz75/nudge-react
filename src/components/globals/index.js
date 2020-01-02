@@ -1,7 +1,12 @@
+import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 import {
-  layout,
+  background,
+  border,
+  color,
+  compose,
   flexbox,
+  layout,
   space,
   typography,
 } from 'styled-system';
@@ -29,6 +34,20 @@ export const FlexCol = styled(Wrapper)`
   justify-content: flex-start;
   align-items: stretch;
   ${flexbox}
+`;
+
+export const Box = styled('div')(
+  compose(
+    space,
+    background,
+    border,
+    color,
+  ),
+);
+
+export const Link = styled(RouterLink)`
+  color: ${(props) => props.theme.buttons.primary.backgroundColor}
+
 `;
 
 export const Text = styled.p`

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import Input from 'components/input';
 import FormError from 'components/form-error';
-import { Text } from 'components/globals';
+import { Text, Link } from 'components/globals';
 import { Wrapper, StyledForm, StyledButton } from './style';
 
 function FormLogin(props) {
@@ -28,10 +27,10 @@ function FormLogin(props) {
         <Input type="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <StyledButton label="Login" type="submit" />
-        { errorMessage && <FormError message={errorMessage} />}
+        { errorMessage && <FormError mt="md" message={errorMessage} />}
       </StyledForm>
 
-      <Text marginTop="md" marginBottom="0" textAlign="center" fontSize="sm">
+      <Text mt="md" mb="0" textAlign="center" fontSize="sm">
         Don&apos;t have an account yet?&nbsp;
         <Link to="/signup">Sign up</Link>
       </Text>
