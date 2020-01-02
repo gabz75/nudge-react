@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
 
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
+import {
+  Wrapper,
+  StyledLabel,
+  StyledInput,
+} from './style';
 
 function Input(props) {
   // props
@@ -11,36 +15,16 @@ function Input(props) {
   } = props;
 
   // hooks
-  const ch = useClassNameHelper()
-    .register('label', [
-      'py-2',
-      'inline-block',
-      'w-full',
-      'appearance-none',
-      'leading-normal',
-    ])
-    .register('input', [
-      'focus:outline-none',
-      'focus:border-indigo-500',
-      'border',
-      'border-gray-300',
-      'p-2',
-      'inline-block',
-      'w-full',
-      'appearance-none',
-      'leading-normal',
-    ]);
-
   const [id] = useState(() => uniqueId('input-'));
 
   return (
-    <div className={className}>
-      <label htmlFor={id} className={ch.get('label')}>
+    <Wrapper className={className}>
+      <StyledLabel htmlFor={id}>
         {label}
         :
-      </label>
-      <input id={id} type={type} value={value} onChange={onChange} className={ch.get('input')} />
-    </div>
+      </StyledLabel>
+      <StyledInput id={id} type={type} value={value} onChange={onChange} />
+    </Wrapper>
   );
 }
 

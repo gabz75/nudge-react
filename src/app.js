@@ -7,20 +7,23 @@ import {
 } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+import { ThemeProvider } from 'styled-components';
 
-import ProvideAuth from './components/provide-auth';
+import ProvideAuth from 'components/provide-auth';
 
-import Navbar from './components/navbar';
-import UnauthenticatedRoute from './components/unauthenticated-route';
-import ProtectedRoute from './components/protected-route';
-import LoginRoute from './routes/login';
-import SignupRoute from './routes/signup';
-import DashboardRoute from './routes/dashboard';
+import Navbar from 'components/navbar';
+import UnauthenticatedRoute from 'components/unauthenticated-route';
+import ProtectedRoute from 'components/protected-route';
+import LoginRoute from 'routes/login';
+import SignupRoute from 'routes/signup';
+import DashboardRoute from 'routes/dashboard';
 
-import GoalNewRoute from './routes/goal/new';
-import GoalUpdateRoute from './routes/goal/update';
+import GoalNewRoute from 'routes/goal/new';
+import GoalUpdateRoute from 'routes/goal/update';
 
-import { STORAGE_AUTH_KEY } from './hooks/use-provide-auth';
+import { STORAGE_AUTH_KEY } from 'hooks/use-provide-auth';
+
+import theme from './theme';
 
 function App() {
   const client = new ApolloClient({
@@ -40,15 +43,17 @@ function App() {
       <BrowserRouter>
         <Switch>
           <ProvideAuth>
-            <Navbar />
-            <Route exact path="/">
-              <Redirect push to={LoginRoute.path} />
-            </Route>
-            <UnauthenticatedRoute path={LoginRoute.path} component={LoginRoute} />
-            <UnauthenticatedRoute path={SignupRoute.path} component={SignupRoute} />
-            <ProtectedRoute path={DashboardRoute.path} component={DashboardRoute} />
-            <ProtectedRoute path={GoalNewRoute.path} component={GoalNewRoute} />
-            <ProtectedRoute path={GoalUpdateRoute.path} component={GoalUpdateRoute} />
+            <ThemeProvider theme={theme}>
+              <Navbar />
+              <Route exact path="/">
+                <Redirect push to={LoginRoute.path} />
+              </Route>
+              <UnauthenticatedRoute path={LoginRoute.path} component={LoginRoute} />
+              <UnauthenticatedRoute path={SignupRoute.path} component={SignupRoute} />
+              <ProtectedRoute path={DashboardRoute.path} component={DashboardRoute} />
+              <ProtectedRoute path={GoalNewRoute.path} component={GoalNewRoute} />
+              <ProtectedRoute path={GoalUpdateRoute.path} component={GoalUpdateRoute} />
+            </ThemeProvider>
           </ProvideAuth>
         </Switch>
       </BrowserRouter>

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Input from '../input';
-import Button from '../button';
-import FormError from '../form-error';
+import Input from 'components/input';
+import FormError from 'components/form-error';
+import { Text } from 'components/globals';
+import { Wrapper, StyledForm, StyledButton } from './style';
 
 function FormLogin(props) {
   // props
-  const { onSubmit, className } = props;
+  const { onSubmit, className, width } = props;
 
   // hooks
   const [email, setEmail] = useState();
@@ -22,31 +23,32 @@ function FormLogin(props) {
   };
 
   return (
-    <div className={className}>
-      <form onSubmit={handleSubmit} className="flex flex-col border border-gray-400 bg-white p-4">
+    <Wrapper className={className} width={width}>
+      <StyledForm onSubmit={handleSubmit}>
         <Input type="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <hr className="my-4" />
-        <Button label="Login" type="submit" />
-        { errorMessage && <FormError message={errorMessage} className="mt-4" />}
-      </form>
+        <StyledButton label="Login" type="submit" />
+        { errorMessage && <FormError message={errorMessage} />}
+      </StyledForm>
 
-      <p className="text-xs mt-2 text-center">
+      <Text marginTop="md" marginBottom="0" textAlign="center" fontSize="sm">
         Don&apos;t have an account yet?&nbsp;
-        <Link to="/signup" className="text-white underline">Sign up</Link>
-      </p>
-    </div>
+        <Link to="/signup">Sign up</Link>
+      </Text>
+    </Wrapper>
   );
 }
 
 FormLogin.propTypes = {
   onSubmit: PropTypes.func,
   className: PropTypes.string,
+  width: PropTypes.arrayOf(PropTypes.number),
 };
 
 FormLogin.defaultProps = {
   onSubmit: () => {},
   className: undefined,
+  width: undefined,
 };
 
 export default FormLogin;

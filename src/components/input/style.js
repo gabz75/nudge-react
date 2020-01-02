@@ -1,0 +1,23 @@
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const StyledLabel = styled.label`
+  margin-bottom: 0.5rem;
+  font-size: ${(props) => props.theme.fontSizes.md}
+`;
+
+export const StyledInput = styled.input`
+  padding: 0.5rem 0.25rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid ${(props) => props.theme.colors.border}
+
+  &:focus {
+    outline: none;
+    border: 1px solid ${(props) => props.theme.buttons.primary.backgroundColor}
+  }
+`;
