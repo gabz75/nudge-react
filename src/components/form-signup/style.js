@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import Button from 'components/button';
 import FormError from 'components/form-error';
+import FormSpinner from 'components/form-spinner';
 import { Text } from 'components/globals';
 
 export { StyledForm, FlexCol, Link } from 'components/globals';
@@ -20,5 +21,7 @@ export const StyledText = styled(Text)`
 export const StyledFormError = styled(FormError)`
   margin-top: 1rem;
 `;
+
+export const StyledFormSpinner = styled(FormSpinner)``;
 
 export default {};

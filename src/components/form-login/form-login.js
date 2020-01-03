@@ -10,6 +10,7 @@ import {
   StyledForm,
   StyledFormError,
   StyledText,
+  StyledFormSpinner,
 } from './style';
 
 function FormLogin(props) {
@@ -20,11 +21,15 @@ function FormLogin(props) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [errorMessage, setErrorMessage] = useState();
+  const [loading, setLoading] = useState(false);
 
   // handlers
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ variables: { email, password } }).catch((error) => setErrorMessage(error.message));
+    setLoading(true);
+    onSubmit({ variables: { email, password } })
+      .catch((error) => setErrorMessage(error.message))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -33,6 +38,7 @@ function FormLogin(props) {
         <Input type="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <StyledButton label="Login" type="submit" />
+        { loading && <StyledFormSpinner />}
         { errorMessage && <StyledFormError message={errorMessage} />}
       </StyledForm>
 

@@ -12,6 +12,7 @@ export default {
   space,
 
   colors: {
+    primary: '#4b8bf2',
     red: '#fa7a7a',
     border: '#dedede',
     borderFocus: '#000',
