@@ -1,15 +1,15 @@
 import React from 'react';
 
 import Dashboard from 'components/dashboard';
-import { Flex } from 'components/globals';
+import { FlexCol } from 'components/globals';
 
 export const PATH = '/dashboard';
 
 function DashboardRoute() {
   return (
-    <Flex justifyContent="center">
+    <FlexCol alignItems="center">
       <Dashboard width={[1, 1 / 2, 1 / 3, 1 / 4]} />
-    </Flex>
+    </FlexCol>
   );
 }
 

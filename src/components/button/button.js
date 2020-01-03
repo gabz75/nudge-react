@@ -6,7 +6,7 @@ import { StyledButton } from './style';
 function Button(props) {
   // props
   const {
-    children, className, type, onClick, label,
+    children, type, onClick, label,
   } = props;
 
   return (
@@ -14,7 +14,6 @@ function Button(props) {
       data-testid="button"
       type={type}
       onClick={onClick}
-      className={className}
     >
       {children || label}
     </StyledButton>
@@ -23,7 +22,6 @@ function Button(props) {
 
 Button.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
   label: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
@@ -31,7 +29,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   children: undefined,
-  className: undefined,
   label: undefined,
   onClick: () => {},
   type: 'button',

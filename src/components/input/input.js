@@ -18,7 +18,7 @@ function Input(props) {
   const [id] = useState(() => uniqueId('input-'));
 
   return (
-    <Wrapper className={className}>
+    <Wrapper>
       <StyledLabel htmlFor={id}>
         {label}
         :
@@ -34,7 +34,6 @@ Input.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
-  className: PropTypes.string,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func,
@@ -42,7 +41,6 @@ Input.propTypes = {
 
 Input.defaultProps = {
   value: '', // @todo: why undefined creates an uncontrolled/controlled component switch?
-  className: undefined,
   onChange: () => {},
 };
 

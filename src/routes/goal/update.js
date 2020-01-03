@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import FormGoal from '../../components/form-goal';
-import { PATH as DashboardPath } from '../dashboard';
-import { useNudgeApi } from '../../hooks/use-nudge-api';
+import FormGoal from 'components/form-goal';
+import { FlexCol } from 'components/globals';
+import { PATH as DashboardPath } from 'routes/dashboard';
+import { useNudgeApi } from 'hooks/use-nudge-api';
 
 export const PATH = '/goal/update/:id';
 export const pathFor = (id) => PATH.replace(':id', id);
@@ -27,10 +28,9 @@ function GoalUpdate(props) {
   if (error) return 'Error!';
 
   return (
-    <div className="mt-32 flex flex-col justify-center items-center">
-      <FormGoal className="w-1/4" goal={data.getGoal} onSubmit={handleSubmit} />
-      <Link to={DashboardPath}>back to Dashboard</Link>
-    </div>
+    <FlexCol alignItems="center">
+      <FormGoal width={[1, 1 / 2, 1 / 3, 1 / 4]} goal={data.getGoal} onSubmit={handleSubmit} />
+    </FlexCol>
   );
 }
 

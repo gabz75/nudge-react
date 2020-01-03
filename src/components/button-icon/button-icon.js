@@ -7,7 +7,7 @@ import { Label, StyledButton, FlexRow } from './style';
 function ButtonIcon(props) {
   // props
   const {
-    children, className, onClick, icon, label, ...otherProps
+    children, onClick, icon, label, ...otherProps
   } = props;
 
   function sanitizeSytledSystemProps(object) {
@@ -31,7 +31,6 @@ function ButtonIcon(props) {
       data-testid="button"
       type="button"
       onClick={onClick}
-      className={className}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...sanitizeSytledSystemProps(otherProps)}
     >
@@ -45,7 +44,6 @@ function ButtonIcon(props) {
 
 ButtonIcon.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
   icon: PropTypes.func,
   label: PropTypes.string,
   onClick: PropTypes.func,
@@ -53,7 +51,6 @@ ButtonIcon.propTypes = {
 
 ButtonIcon.defaultProps = {
   children: undefined,
-  className: undefined,
   icon: undefined,
   label: undefined,
   onClick: () => {},

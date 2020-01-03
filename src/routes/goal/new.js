@@ -1,9 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import FormGoal from '../../components/form-goal';
-import { PATH as DashboardPath } from '../dashboard';
-import { useNudgeApi } from '../../hooks/use-nudge-api';
+import FormGoal from 'components/form-goal';
+import { FlexCol } from 'components/globals';
+import { PATH as DashboardPath } from 'routes/dashboard';
+import { useNudgeApi } from 'hooks/use-nudge-api';
 
 export const PATH = '/goal/new';
 
@@ -14,9 +15,9 @@ function NewGoal() {
   const handleSubmit = (variables) => createGoal({ variables }).then(() => history.push(DashboardPath));
 
   return (
-    <div className="mt-32 flex justify-center items-center">
-      <FormGoal className="w-1/4" onSubmit={handleSubmit} />
-    </div>
+    <FlexCol alignItems="center">
+      <FormGoal width={[1, 1 / 2, 1 / 3, 1 / 4]} onSubmit={handleSubmit} />
+    </FlexCol>
   );
 }
 

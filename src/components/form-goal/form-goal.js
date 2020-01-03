@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Input from '../input';
-import Checkbox from '../checkbox';
-import Button from '../button';
-import FormError from '../form-error';
+import Input from 'components/input';
+import Checkbox from 'components/checkbox';
+import {
+  FlexCol,
+  StyledButton,
+  StyledForm,
+  StyledFormError,
+  StyledFormSpinner,
+} from './style';
 
 function FormGoal(props) {
   // props
   const {
-    className,
     onSubmit,
     goal,
+    width,
   } = props;
 
   // hooks
@@ -19,10 +24,12 @@ function FormGoal(props) {
   const [color, setColor] = useState(goal.color);
   const [_public, setPublic] = useState(goal.public);
   const [errorMessage, setErrorMessage] = useState();
+  const [loading, setLoading] = useState(false);
 
   // handlers
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     onSubmit({
       variables: {
         id: goal.id,
@@ -30,24 +37,26 @@ function FormGoal(props) {
         color,
         public: _public,
       },
-    }).catch((error) => setErrorMessage(error.message));
+    })
+      .catch((error) => setErrorMessage(error.message))
+      .finally(() => setLoading(false));
   };
 
   return (
-    <div className={className}>
-      <form onSubmit={handleSubmit} className="flex flex-col border border-gray-400 bg-white p-4">
+    <FlexCol width={width}>
+      <StyledForm onSubmit={handleSubmit}>
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <Input type="text" label="Color" value={color} onChange={(e) => setColor(e.target.value)} />
         <Checkbox label="Public" checked={_public} onChange={(e) => setPublic(e.target.checked)} />
-        <Button label="Submit" type="submit" />
-        { errorMessage && <FormError message={errorMessage} className="mt-4" />}
-      </form>
-    </div>
+        <StyledButton label="Submit" type="submit" />
+        { loading && <StyledFormSpinner />}
+        { errorMessage && <StyledFormError message={errorMessage} />}
+      </StyledForm>
+    </FlexCol>
   );
 }
 
 FormGoal.propTypes = {
-  className: PropTypes.string,
   onSubmit: PropTypes.func,
   goal: PropTypes.shape({
     id: PropTypes.string,
@@ -55,12 +64,13 @@ FormGoal.propTypes = {
     color: PropTypes.string,
     public: PropTypes.bool,
   }),
+  width: PropTypes.arrayOf(PropTypes.number),
 };
 
 FormGoal.defaultProps = {
   onSubmit: () => {},
-  className: undefined,
   goal: {},
+  width: undefined,
 };
 
 export default FormGoal;

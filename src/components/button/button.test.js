@@ -33,13 +33,6 @@ describe('prop `type`', () => {
   });
 });
 
-describe('prop `className`', () => {
-  it('renders with className="foobar"', () => {
-    const { getByTestId } = render(<Button className="foobar" />);
-    expect(getByTestId('button')).toHaveClass('foobar');
-  });
-});
-
 describe('prop `size`', () => {
   it('console.error and throws given an invalid size', () => {
     /* eslint-disable no-console */

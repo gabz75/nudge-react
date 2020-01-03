@@ -15,11 +15,6 @@ export const Wrapper = styled.div`
   ${layout}
 `;
 
-export const Flex = styled(Wrapper)`
-  display: flex;
-  ${flexbox}
-`;
-
 export const FlexRow = styled(Wrapper)`
   display: flex;
   flex-direction: row;
