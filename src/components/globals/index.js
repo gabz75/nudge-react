@@ -54,6 +54,7 @@ export const Text = styled.p`
   margin-bottom: 1rem;
   ${space}
   ${typography}
+  ${flexbox}
 `;
 
 export const StyledForm = styled.form`

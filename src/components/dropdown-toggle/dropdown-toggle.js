@@ -1,40 +1,22 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import DropdownContext from '../../contexts/dropdown';
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
-import { useOnClickOutside } from '../../hooks/use-on-click-outside';
+import DropdownContext from 'contexts/dropdown';
+import { ButtonClear } from './style';
 
-function DropdownToggle({ children, ...props }) {
-  // props
-  const { className } = props;
-
+function DropdownToggle({ children }) {
   // hooks
-  const ref = useRef();
   const dropdownContext = useContext(DropdownContext);
-  const ch = useClassNameHelper()
-    .register('button', [
-      'focus:outline-none',
-    ]);
-
-  useOnClickOutside(ref, () => {
-    setTimeout(() => dropdownContext.closeDropdown()); // @todo why setTimeout?
-  });
 
   return (
-    <button ref={ref} className={ch.get('button', className)} onClick={() => dropdownContext.toggleDropdown()}>
+    <ButtonClear onClick={() => dropdownContext.toggleDropdown()}>
       {children}
-    </button>
+    </ButtonClear>
   );
 }
 
 DropdownToggle.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
-
-DropdownToggle.defaultProps = {
-  className: undefined,
 };
 
 export default DropdownToggle;

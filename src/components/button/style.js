@@ -8,7 +8,7 @@ export const StyledButton = styled.button`
   border: 2px solid ${(props) => props.theme.buttons.primary.borderColor}
   cursor: pointer;
   border-radius: 2px;
-  transition: all 0.4s ease 0s;
+  transition: all 0.2s ease 0s;
   letter-spacing: 0.5px;
 
   &:focus {

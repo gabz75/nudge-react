@@ -13,22 +13,23 @@ export default {
 
   colors: {
     primary: '#4b8bf2',
+    lightBlue: '#93d2d8',
     red: '#fa7a7a',
     border: '#dedede',
     borderFocus: '#000',
     body: '#fcfafa',
     backgroundColor: '#ffffff',
     text: {
-      gray: '#dedede',
+      gray: '#93979c',
     },
   },
 
   fontSizes: {
-    xs: 12,
-    sm: 14,
-    md: 16,
-    lg: 20,
-    xl: 24,
+    xs: '12px',
+    sm: '14px',
+    md: '16px',
+    lg: '20px',
+    xl: '24px',
   },
 
   buttons: {

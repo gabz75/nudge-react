@@ -1,40 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DropdownToggle from '../dropdown-toggle';
-import DropdownMenu from '../dropdown-menu';
-import DropdownContext from '../../contexts/dropdown';
-import { useDropdown } from '../../hooks/use-dropdown';
-import { useClassNameHelper } from '../../hooks/use-class-name-helper';
+import DropdownToggle from 'components/dropdown-toggle';
+import DropdownMenu from 'components/dropdown-menu';
+import DropdownContext from 'contexts/dropdown';
+import { useDropdown } from 'hooks/use-dropdown';
+import { Wrapper } from './style';
 
-function Dropdown({ children, ...props }) {
-  // props
-  const { className } = props;
-
+function Dropdown({ children }) {
   // hooks
-  const ch = useClassNameHelper()
-    .register('container', [
-      'relative',
-      'leading-zero',
-    ]);
   const dropdownContext = useDropdown();
 
   return (
     <DropdownContext.Provider value={dropdownContext}>
-      <div className={ch.get('container', className)}>
+      <Wrapper>
         { children }
-      </div>
+      </Wrapper>
     </DropdownContext.Provider>
   );
 }
 
 Dropdown.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
-
-Dropdown.defaultProps = {
-  className: undefined,
 };
 
 Dropdown.Toggle = DropdownToggle;

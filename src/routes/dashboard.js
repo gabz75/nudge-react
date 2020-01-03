@@ -1,14 +1,15 @@
 import React from 'react';
 
-import Dashboard from '../components/dashboard';
+import Dashboard from 'components/dashboard';
+import { Flex } from 'components/globals';
 
 export const PATH = '/dashboard';
 
 function DashboardRoute() {
   return (
-    <div className="mt-8 flex justify-center items-center">
-      <Dashboard className="w-2/3 xl:w-1/4" />
-    </div>
+    <Flex justifyContent="center">
+      <Dashboard width={[1, 1 / 2, 1 / 3, 1 / 4]} />
+    </Flex>
   );
 }
 
