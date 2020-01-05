@@ -14,7 +14,7 @@ function DropdownMenu({ children }) {
   // @todo: handle closing dropdown when action doens't destroy the menu.
 
   return (
-    <Wrapper ref={ref} style={{ display: (dropdownContext.showDropdown ? 'block' : ' none') }}>
+    <Wrapper ref={ref} style={{ display: (dropdownContext.showDropdown ? 'flex' : ' none') }}>
       {children}
     </Wrapper>
   );

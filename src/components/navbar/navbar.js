@@ -1,9 +1,12 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import { DashboardPath, LoginPath } from '../../routes';
-import Dropdown from '../dropdown';
-import { useAuth } from '../../hooks/use-auth';
+import { DashboardPath, LoginPath } from 'routes';
+import Dropdown from 'components/dropdown';
+import { ButtonOutline } from 'components/button';
+import { useAuth } from 'hooks/use-auth';
+import { Title, Link } from 'components/globals';
+import { StyledNavbar, ProfileToggle } from './style';
 
 function Navbar() {
   // hooks
@@ -17,23 +20,26 @@ function Navbar() {
   };
 
   if (!isAuthenticated()) {
-    return <nav className="bg-blue-1 w-full h-16 flex justify-center" />;
+    return (
+      <StyledNavbar>
+        <Title color="white">Nudge</Title>
+      </StyledNavbar>
+    );
   }
 
   return (
-    <nav className="bg-blue-1 w-full h-16 flex justify-center">
-      <div className="w-2/3 xl:w-1/4 flex items-center justify-end">
-        <Dropdown>
-          <Dropdown.Toggle>
-            <div className="bg-green-500 h-8 w-8 rounded-full" />
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Link className="py-1" to={DashboardPath}>Dashboard</Link>
-            <button className="py-1" onClick={handleLogout}>Logout</button>
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
-    </nav>
+    <StyledNavbar>
+      <Title color="white">Nudge</Title>
+      <Dropdown>
+        <Dropdown.Toggle>
+          <ProfileToggle />
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Link to={DashboardPath}>Dashboard</Link>
+          <ButtonOutline mt="sm" onClick={handleLogout}>Logout</ButtonOutline>
+        </Dropdown.Menu>
+      </Dropdown>
+    </StyledNavbar>
   );
 }
 

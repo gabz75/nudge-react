@@ -7,7 +7,7 @@ import Octicon, {
 import { useHistory } from 'react-router-dom';
 
 import DropdownKebab from 'components/dropdown-kebab';
-import ButtonIcon from 'components/button-icon';
+import { ButtonLink } from 'components/button';
 import { pathFor as goalUpdatePath } from 'routes/goal/update';
 import {
   GoalWrapper,
@@ -36,9 +36,18 @@ function Goal({ goal, ...props }) {
       <GoalCell>{goal.public && <Octicon icon={Globe} />}</GoalCell>
       <GoalCellDate><Moment date={goal.createdAt} format="d MMM." /></GoalCellDate>
       <DropdownKebab>
-        <ButtonIcon onClick={handleEdit} icon={Pencil} label="Edit" />
-        <ButtonIcon onClick={handleArchive} icon={Archive} label="Archive" mx="xs" />
-        <ButtonIcon onClick={handleDelete} icon={X} label="Delete" />
+        <ButtonLink onClick={handleEdit}>
+          Edit
+          <Octicon icon={Pencil} />
+        </ButtonLink>
+        <ButtonLink onClick={handleArchive}>
+          Archive
+          <Octicon icon={Archive} />
+        </ButtonLink>
+        <ButtonLink onClick={handleDelete}>
+          Delete
+          <Octicon icon={X} />
+        </ButtonLink>
       </DropdownKebab>
     </GoalWrapper>
   );

@@ -91,4 +91,13 @@ export const Spinner = styled.div`
   }
 `;
 
+
+export const Title = styled.h1`
+  font-size: ${(props) => props.theme.fontSizes.lg};
+  margin: 0;
+  color: inherit;
+  ${color}
+  ${typography}
+`;
+
 export default {};

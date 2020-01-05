@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   padding: 0.5rem;
   position: absolute;
   display: flex;
-  flex-grow: 1;
+  flex-direction: column;
   right: 0;
   z-index: 9999;
   white-space: nowrap;

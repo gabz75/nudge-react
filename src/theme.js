@@ -1,6 +1,6 @@
 /* eslint prefer-destructuring: 0 */
 
-const space = [0, 4, 8, 16, 32, 64];
+const space = [0, '4px', '8px', '16px', '32px', '64px'];
 
 space.xs = space[1]; // 4
 space.sm = space[2]; // 8
