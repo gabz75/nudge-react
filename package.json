@@ -17,12 +17,12 @@
     "react-moment": "^0.9.6",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "tailwindcss": "^1.1.4"
+    "styled-components": "^4.4.1",
+    "styled-system": "^5.1.4"
   },
   "scripts": {
-    "build:style": "tailwind build src/styles/index.css -c ./tailwind.config.js -o src/styles/tailwind.css",
-    "start": "yarn build:style && react-scripts start",
-    "build": "yarn build:style && react-scripts build",
+    "start": "PORT=3001 react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "yarn eslint src/ -c .eslintrc.js"
@@ -48,6 +48,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",

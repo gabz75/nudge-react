@@ -1,17 +1,14 @@
 import React from 'react';
 
-import Dashboard from '../components/dashboard';
-
-export const PATH = '/dashboard';
+import Dashboard from 'components/dashboard';
+import { ResponsiveCenteredLayout } from 'components/globals';
 
 function DashboardRoute() {
   return (
-    <div className="mt-8 flex justify-center items-center">
-      <Dashboard className="w-2/3 xl:w-1/4" />
-    </div>
+    <ResponsiveCenteredLayout>
+      <Dashboard />
+    </ResponsiveCenteredLayout>
   );
 }
-
-DashboardRoute.path = PATH;
 
 export default DashboardRoute;

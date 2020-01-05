@@ -1,11 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ButtonLink\` renders 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdVaJa sc-bxivhb bePzqf"
+    data-testid="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`ButtonOutline\` renders 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdVaJa sc-htpNat thfpy"
+    data-testid="button"
+  />
+</DocumentFragment>
+`;
+
 exports[`prop \`label\` renders with label="Ok 1`] = `
 <DocumentFragment>
   <button
-    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    class="sc-bdVaJa sc-bwzfXH gWaywk"
     data-testid="button"
-    type="button"
   >
     Ok
   </button>
@@ -15,41 +32,30 @@ exports[`prop \`label\` renders with label="Ok 1`] = `
 exports[`prop \`label\` renders with label="Submit 1`] = `
 <DocumentFragment>
   <button
-    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    class="sc-bdVaJa sc-bwzfXH gWaywk"
     data-testid="button"
-    type="button"
   >
     Submit
   </button>
 </DocumentFragment>
 `;
 
-exports[`prop \`size\` renders for \`md\` 1`] = `
-<DocumentFragment>
-  <button
-    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
-    data-testid="button"
-    type="button"
-  />
-</DocumentFragment>
-`;
-
-exports[`prop \`size\` renders for \`sm\` 1`] = `
-<DocumentFragment>
-  <button
-    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-1 px-2 text-xs font-bold"
-    data-testid="button"
-    type="button"
-  />
-</DocumentFragment>
-`;
-
 exports[`prop \`type\` renders with type="button" 1`] = `
 <DocumentFragment>
   <button
-    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    class="sc-bdVaJa sc-bwzfXH gWaywk"
     data-testid="button"
     type="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`prop \`type\` renders with type="reset" 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdVaJa sc-bwzfXH gWaywk"
+    data-testid="button"
+    type="reset"
   />
 </DocumentFragment>
 `;
@@ -57,7 +63,7 @@ exports[`prop \`type\` renders with type="button" 1`] = `
 exports[`prop \`type\` renders with type="submit" 1`] = `
 <DocumentFragment>
   <button
-    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    class="sc-bdVaJa sc-bwzfXH gWaywk"
     data-testid="button"
     type="submit"
   />
@@ -67,9 +73,8 @@ exports[`prop \`type\` renders with type="submit" 1`] = `
 exports[`renders 1`] = `
 <DocumentFragment>
   <button
-    class="bg-cta hover:bg-blue-400 text-white border-b-4 border-yellow-1 hover:border-blue-500 rounded py-2 px-4 text-sm font-bold"
+    class="sc-bdVaJa sc-bwzfXH gWaywk"
     data-testid="button"
-    type="button"
   />
 </DocumentFragment>
 `;

@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
 
-import { PATH as DashboardPath } from '../routes/dashboard';
-import { useNudgeApi } from './use-nudge-api';
+import { DashboardPath } from 'routes';
+import { useNudgeApi } from 'hooks/use-nudge-api';
 
 export const STORAGE_AUTH_KEY = 'nudge_authentication_jwt';
 
