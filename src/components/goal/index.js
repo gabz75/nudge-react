@@ -31,10 +31,10 @@ function Goal({ goal, ...props }) {
 
   return (
     <GoalWrapper>
-      <GoalColor style={{ backgroundColor: goal.color }} />
-      <GoalCellGrow>{goal.name}</GoalCellGrow>
+      <GoalColor style={{ backgroundColor: goal.color ? goal.color : '#dedede' }} />
+      <GoalCellGrow>{goal.name ? goal.name : '--'}</GoalCellGrow>
       <GoalCell>{goal.public && <Octicon icon={Globe} />}</GoalCell>
-      <GoalCellDate><Moment date={goal.createdAt} format="d MMM." /></GoalCellDate>
+      <GoalCellDate>{goal.createdAt && <Moment date={goal.createdAt} format="d MMM." />}</GoalCellDate>
       <DropdownKebab>
         <ButtonLink onClick={handleEdit}>
           Edit

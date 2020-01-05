@@ -5,10 +5,11 @@ import { Box, Text } from 'components/globals';
 
 function FormError(props) {
   // props
-  const { message } = props;
+  const { message, className } = props;
 
   return (
     <Box
+      className={className}
       role="alert"
       padding="sm"
       color="red"
@@ -21,10 +22,12 @@ function FormError(props) {
 }
 
 FormError.propTypes = {
+  className: PropTypes.string,
   message: PropTypes.string,
 };
 
 FormError.defaultProps = {
+  className: undefined,
   message: undefined,
 };
 

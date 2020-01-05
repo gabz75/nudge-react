@@ -31,6 +31,50 @@ export const FlexCol = styled(Wrapper)`
   ${flexbox}
 `;
 
+export const ResponsiveCenteredLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+
+  & > div {
+    width: 100%;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    // border: 1px solid blue;
+
+    & > div {
+      width: 85%;
+    }
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.md}) {
+    // border: 1px solid red;
+
+    & > div {
+      width: 75%;
+    }
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.lg}) {
+    // border: 1px solid green;
+
+    & > div {
+      width: 65%;
+    }
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.xl}) {
+    // border: 1px solid green;
+
+    & > div {
+      width: 45%;
+    }
+  }
+`;
+
 export const Box = styled('div')(
   compose(
     space,

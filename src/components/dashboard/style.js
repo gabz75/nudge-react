@@ -1,11 +1,8 @@
 import styled from 'styled-components';
-import { layout } from 'styled-system';
 
 import { FlexCol, FlexRow } from 'components/globals';
 
-export const Card = styled(FlexCol)`
-  ${layout}
-`;
+export const Card = FlexCol;
 
 Card.Header = styled(FlexRow)`
   justify-content: space-between;
@@ -15,6 +12,7 @@ Card.Header = styled(FlexRow)`
 `;
 
 Card.Body = styled.div`
+  position: relative;
   padding: 1rem;
   border-left: 1px solid ${(props) => props.theme.colors.border};
   border-bottom: 1px solid ${(props) => props.theme.colors.border};

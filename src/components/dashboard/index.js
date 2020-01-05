@@ -1,17 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Goal from 'components/goal';
+import AbsoluteSpinner from 'components/absolute-spinner';
 import DropdownKebab from 'components/dropdown-kebab';
 import { Link } from 'components/globals';
 import { GoalNewPath } from 'routes';
 import { useNudgeApi } from 'hooks/use-nudge-api';
 import { Card, Title } from './style';
 
-function Dashboard(props) {
-  // props
-  const { width } = props;
-
+function Dashboard() {
   // hooks
   const { getGoals, deleteGoal } = useNudgeApi();
   const {
@@ -24,11 +21,23 @@ function Dashboard(props) {
     refetch();
   };
 
-  if (networkStatus === 4) return 'Refetching!';
-  if (loading) return 'Loading...';
+  if (loading) {
+    return (
+      <Card>
+        <Card.Header>
+          <Title>Your goals</Title>
+        </Card.Header>
+        <Card.Body>
+          <AbsoluteSpinner />
+          <Goal key="1" goal={{}} />
+          <Goal key="2" goal={{}} />
+        </Card.Body>
+      </Card>
+    );
+  }
 
   return (
-    <Card width={width}>
+    <Card>
       <Card.Header>
         <Title>Your goals</Title>
         <DropdownKebab>
@@ -36,18 +45,11 @@ function Dashboard(props) {
         </DropdownKebab>
       </Card.Header>
       <Card.Body>
+        {networkStatus === 4 && <AbsoluteSpinner />}
         { data.getGoals.map((goal) => <Goal key={goal.id} goal={goal} onDelete={handleDelete} />) }
       </Card.Body>
     </Card>
   );
 }
-
-Dashboard.propTypes = {
-  width: PropTypes.arrayOf(PropTypes.number),
-};
-
-Dashboard.defaultProps = {
-  width: undefined,
-};
 
 export default Dashboard;

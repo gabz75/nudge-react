@@ -2,13 +2,21 @@
 
 const space = [0, '4px', '8px', '16px', '32px', '64px'];
 
+const breakpoints = ['40em', '52em', '64em', '80rem'];
+
 space.xs = space[1]; // 4
 space.sm = space[2]; // 8
 space.md = space[3]; // 16
 space.lg = space[4]; // 32
 space.xl = space[5]; // 64
 
+breakpoints.sm = breakpoints[0];
+breakpoints.md = breakpoints[1];
+breakpoints.lg = breakpoints[2];
+breakpoints.xl = breakpoints[3];
+
 export default {
+  breakpoints,
   space,
 
   colors: {
