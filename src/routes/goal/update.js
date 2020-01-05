@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import FormGoal from '../../components/form-goal';
-import { PATH as DashboardPath } from '../dashboard';
-import { useNudgeApi } from '../../hooks/use-nudge-api';
-
-export const PATH = '/goal/update/:id';
-export const pathFor = (id) => PATH.replace(':id', id);
+import FormGoal from 'components/form-goal';
+import FormSpinner from 'components/absolute-spinner';
+import { ResponsiveCenteredLayout } from 'components/globals';
+import { DashboardPath } from 'routes';
+import { useNudgeApi } from 'hooks/use-nudge-api';
 
 function GoalUpdate(props) {
   // props
@@ -19,22 +18,18 @@ function GoalUpdate(props) {
 
   const { loading, error, data } = getGoal({ variables: { id: params.id } });
 
-
   // handlers
   const handleSubmit = (args) => updateGoal(args).then(() => history.push(DashboardPath));
 
-  if (loading) return 'Loading...';
+  if (loading) return <FormSpinner />;
   if (error) return 'Error!';
 
   return (
-    <div className="mt-32 flex flex-col justify-center items-center">
-      <FormGoal className="w-1/4" goal={data.getGoal} onSubmit={handleSubmit} />
-      <Link to={DashboardPath}>back to Dashboard</Link>
-    </div>
+    <ResponsiveCenteredLayout>
+      <FormGoal goal={data.getGoal} onSubmit={handleSubmit} />
+    </ResponsiveCenteredLayout>
   );
 }
-
-GoalUpdate.path = PATH;
 
 GoalUpdate.propTypes = {
   match: PropTypes.shape({

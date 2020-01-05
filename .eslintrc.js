@@ -13,6 +13,11 @@ module.exports = {
       "react": {
         "version": "detect",
       },
+      "import/resolver": {
+        "node": {
+          "moduleDirectory": ["node_modules", "src/"]
+        }
+      }
     },
     "ignorePatterns": [
       "src/index.js",
@@ -24,5 +29,13 @@ module.exports = {
       // "import/no-absolute-path": 0,
       "react/jsx-filename-extension": 0,
       "max-len": [1, 120],
-    }
+    },
+    "overrides": [
+      {
+        "files": ["src/*.test.js", "src/tests/helpers/*.js"],
+        "rules": {
+          "import/no-extraneous-dependencies": 0
+        }
+      }
+    ],
 };
