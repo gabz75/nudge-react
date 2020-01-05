@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Input from 'components/input';
 import { SignupPath } from 'routes';
+import { useIsMounted } from 'hooks/use-is-mounted';
 import {
   FlexCol,
   Link,
@@ -18,6 +19,7 @@ function FormLogin(props) {
   const { onSubmit, width } = props;
 
   // hooks
+  const isMounted = useIsMounted();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [errorMessage, setErrorMessage] = useState();
@@ -29,7 +31,7 @@ function FormLogin(props) {
     setLoading(true);
     onSubmit({ variables: { email, password } })
       .catch((error) => setErrorMessage(error.message))
-      .finally(() => setLoading(false));
+      .finally(() => isMounted.current && setLoading(false));
   };
 
   return (

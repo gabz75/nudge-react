@@ -12,7 +12,7 @@ function NewGoal() {
   const { createGoal } = useNudgeApi();
   const history = useHistory();
 
-  const handleSubmit = (variables) => createGoal({ variables }).then(() => history.push(DashboardPath));
+  const handleSubmit = (args) => createGoal(args).then(() => history.push(DashboardPath));
 
   return (
     <FlexCol alignItems="center">

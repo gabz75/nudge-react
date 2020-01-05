@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Input from 'components/input';
 import Checkbox from 'components/checkbox';
+import { useIsMounted } from 'hooks/use-is-mounted';
 import {
   FlexCol,
   StyledButton,
@@ -20,6 +21,7 @@ function FormGoal(props) {
   } = props;
 
   // hooks
+  const isMounted = useIsMounted();
   const [name, setName] = useState(goal.name);
   const [color, setColor] = useState(goal.color);
   const [_public, setPublic] = useState(goal.public);
@@ -39,7 +41,7 @@ function FormGoal(props) {
       },
     })
       .catch((error) => setErrorMessage(error.message))
-      .finally(() => setLoading(false));
+      .finally(() => isMounted.current && setLoading(false));
   };
 
   return (

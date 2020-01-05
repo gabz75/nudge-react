@@ -19,7 +19,7 @@ export const StyledText = styled(Text)`
 `;
 
 export const StyledFormError = styled(FormError)`
-  margin-top: 1rem;
+  margin-top: 2rem;
 `;
 
 export const StyledAbsoluteSpinner = styled(FormSpinner)``;
