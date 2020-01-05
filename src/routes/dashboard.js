@@ -3,8 +3,6 @@ import React from 'react';
 import Dashboard from 'components/dashboard';
 import { FlexCol } from 'components/globals';
 
-export const PATH = '/dashboard';
-
 function DashboardRoute() {
   return (
     <FlexCol alignItems="center">
@@ -12,7 +10,5 @@ function DashboardRoute() {
     </FlexCol>
   );
 }
-
-DashboardRoute.path = PATH;
 
 export default DashboardRoute;

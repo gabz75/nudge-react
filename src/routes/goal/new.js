@@ -3,10 +3,8 @@ import { useHistory } from 'react-router-dom';
 
 import FormGoal from 'components/form-goal';
 import { FlexCol } from 'components/globals';
-import { PATH as DashboardPath } from 'routes/dashboard';
+import { DashboardPath } from 'routes';
 import { useNudgeApi } from 'hooks/use-nudge-api';
-
-export const PATH = '/goal/new';
 
 function NewGoal() {
   const { createGoal } = useNudgeApi();
@@ -20,7 +18,5 @@ function NewGoal() {
     </FlexCol>
   );
 }
-
-NewGoal.path = PATH;
 
 export default NewGoal;

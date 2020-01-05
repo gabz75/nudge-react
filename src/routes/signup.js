@@ -4,8 +4,6 @@ import FormSignup from 'components/form-signup';
 import { useAuth } from 'hooks/use-auth';
 import { FlexCol } from 'components/globals';
 
-export const PATH = '/signup';
-
 function Signup() {
   const { signup } = useAuth();
 
@@ -15,7 +13,5 @@ function Signup() {
     </FlexCol>
   );
 }
-
-Signup.path = PATH;
 
 export default Signup;

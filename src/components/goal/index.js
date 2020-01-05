@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 import DropdownKebab from 'components/dropdown-kebab';
 import { ButtonLink } from 'components/button';
-import { pathFor as goalUpdatePath } from 'routes/goal/update';
+import { goalUpdatePath } from 'routes';
 import {
   GoalWrapper,
   GoalColor,

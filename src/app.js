@@ -14,12 +14,20 @@ import ProvideAuth from 'components/provide-auth';
 import Navbar from 'components/navbar';
 import UnauthenticatedRoute from 'components/unauthenticated-route';
 import ProtectedRoute from 'components/protected-route';
+
 import LoginRoute from 'routes/login';
 import SignupRoute from 'routes/signup';
 import DashboardRoute from 'routes/dashboard';
-
 import GoalNewRoute from 'routes/goal/new';
 import GoalUpdateRoute from 'routes/goal/update';
+
+import {
+  LoginPath,
+  SignupPath,
+  DashboardPath,
+  GoalNewPath,
+  GoalUpdatePath,
+} from 'routes';
 
 import { STORAGE_AUTH_KEY } from 'hooks/use-provide-auth';
 
@@ -46,13 +54,13 @@ function App() {
             <ThemeProvider theme={theme}>
               <Navbar />
               <Route exact path="/">
-                <Redirect push to={LoginRoute.path} />
+                <Redirect push to={LoginPath} />
               </Route>
-              <UnauthenticatedRoute path={LoginRoute.path} component={LoginRoute} />
-              <UnauthenticatedRoute path={SignupRoute.path} component={SignupRoute} />
-              <ProtectedRoute path={DashboardRoute.path} component={DashboardRoute} />
-              <ProtectedRoute path={GoalNewRoute.path} component={GoalNewRoute} />
-              <ProtectedRoute path={GoalUpdateRoute.path} component={GoalUpdateRoute} />
+              <UnauthenticatedRoute path={LoginPath} component={LoginRoute} />
+              <UnauthenticatedRoute path={SignupPath} component={SignupRoute} />
+              <ProtectedRoute path={DashboardPath} component={DashboardRoute} />
+              <ProtectedRoute path={GoalNewPath} component={GoalNewRoute} />
+              <ProtectedRoute path={GoalUpdatePath} component={GoalUpdateRoute} />
             </ThemeProvider>
           </ProvideAuth>
         </Switch>

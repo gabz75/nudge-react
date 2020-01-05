@@ -5,11 +5,8 @@ import { useHistory } from 'react-router-dom';
 import FormGoal from 'components/form-goal';
 import FormSpinner from 'components/absolute-spinner';
 import { FlexCol } from 'components/globals';
-import { PATH as DashboardPath } from 'routes/dashboard';
+import { DashboardPath } from 'routes';
 import { useNudgeApi } from 'hooks/use-nudge-api';
-
-export const PATH = '/goal/update/:id';
-export const pathFor = (id) => PATH.replace(':id', id);
 
 function GoalUpdate(props) {
   // props
@@ -33,8 +30,6 @@ function GoalUpdate(props) {
     </FlexCol>
   );
 }
-
-GoalUpdate.path = PATH;
 
 GoalUpdate.propTypes = {
   match: PropTypes.shape({

@@ -4,8 +4,6 @@ import FormLogin from 'components/form-login';
 import { useAuth } from 'hooks/use-auth';
 import { FlexCol } from 'components/globals';
 
-export const PATH = '/login';
-
 function Login() {
   const { login } = useAuth();
 
@@ -15,7 +13,5 @@ function Login() {
     </FlexCol>
   );
 }
-
-Login.path = PATH;
 
 export default Login;
