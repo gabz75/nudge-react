@@ -14,6 +14,7 @@ export const StyledButtonDefault = styled.button`
     margin-left: 0.5rem;
   }
 
+  // @todo : improve
   &:focus {
     outline: none;
   }

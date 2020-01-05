@@ -11,7 +11,7 @@ import {
 function Input(props) {
   // props
   const {
-    value, className, label, type, onChange,
+    value, label, type, onChange,
   } = props;
 
   // hooks
@@ -40,7 +40,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  value: '', // @todo: why undefined creates an uncontrolled/controlled component switch?
+  value: '',
   onChange: () => {},
 };
 

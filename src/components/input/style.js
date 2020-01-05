@@ -6,12 +6,13 @@ export const Wrapper = styled.div`
 `;
 
 export const StyledLabel = styled.label`
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.5px;
   font-size: ${(props) => props.theme.fontSizes.md}
 `;
 
 export const StyledInput = styled.input`
-  padding: 0.5rem 0.25rem;
+  padding: 1rem 0.5rem;
   margin-bottom: 1rem;
   font-size: 1rem;
   border: 1px solid ${(props) => props.theme.colors.border}
