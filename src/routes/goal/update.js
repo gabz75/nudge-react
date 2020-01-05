@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
 import FormGoal from 'components/form-goal';
+import FormSpinner from 'components/absolute-spinner';
 import { FlexCol } from 'components/globals';
 import { PATH as DashboardPath } from 'routes/dashboard';
 import { useNudgeApi } from 'hooks/use-nudge-api';
@@ -20,11 +21,10 @@ function GoalUpdate(props) {
 
   const { loading, error, data } = getGoal({ variables: { id: params.id } });
 
-
   // handlers
   const handleSubmit = (args) => updateGoal(args).then(() => history.push(DashboardPath));
 
-  if (loading) return 'Loading...';
+  if (loading) return <FormSpinner />;
   if (error) return 'Error!';
 
   return (

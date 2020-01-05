@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Background, StyledSpinner } from './style';
 
-function FormSpinner() {
+function AbsoluteSpinner() {
   return (
     <Background>
       <StyledSpinner />
@@ -10,4 +10,4 @@ function FormSpinner() {
   );
 }
 
-export default FormSpinner;
+export default AbsoluteSpinner;

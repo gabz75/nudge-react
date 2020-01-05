@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Button from './button';
+import { Button } from './button';
 
 it('renders', () => {
   const { asFragment } = render(<Button />);
