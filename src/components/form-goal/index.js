@@ -49,7 +49,7 @@ function FormGoal(props) {
       <StyledForm onSubmit={handleSubmit}>
         <Input type="text" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <Input type="text" label="Color" value={color} onChange={(e) => setColor(e.target.value)} />
-        <Checkbox label="Public" checked={_public} onChange={(e) => setPublic(e.target.checked)} />
+        <Checkbox label="Public" checked={goal.checked} onChange={(e) => setPublic(e.target.checked)} />
         <StyledButton label="Submit" type="submit" />
         { loading && <StyledAbsoluteSpinner />}
         { errorMessage && <StyledFormError message={errorMessage} />}
