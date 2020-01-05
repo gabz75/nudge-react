@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { render } from '@testing-library/react';
 
-import { Button } from './button';
+import { render } from 'tests/helpers/render-with-theme';
+
+import { Button, ButtonOutline, ButtonLink } from 'components/button';
 
 it('renders', () => {
   const { asFragment } = render(<Button />);
@@ -31,26 +32,9 @@ describe('prop `type`', () => {
     const { asFragment } = render(<Button type="button" />);
     expect(asFragment()).toMatchSnapshot();
   });
-});
 
-describe('prop `size`', () => {
-  it('console.error and throws given an invalid size', () => {
-    /* eslint-disable no-console */
-    const defaultConsoleError = console.error;
-    console.error = jest.fn();
-    expect(() => render(<Button size="foobar" />)).toThrow(new Error('Arguments after key must be arrays'));
-    expect(console.error).toHaveBeenCalled();
-    console.error = defaultConsoleError;
-    /* eslint-enable no-console */
-  });
-
-  it('renders for `sm`', () => {
-    const { asFragment } = render(<Button size="sm" />);
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('renders for `md`', () => {
-    const { asFragment } = render(<Button size="md" />);
+  it('renders with type="reset"', () => {
+    const { asFragment } = render(<Button type="reset" />);
     expect(asFragment()).toMatchSnapshot();
   });
 });
@@ -61,5 +45,19 @@ describe('prop `onClick`', () => {
     const { getByTestId } = render(<Button onClick={onClickHandler} />);
     getByTestId('button').click();
     expect(onClickHandler).toHaveBeenCalled();
+  });
+});
+
+describe('ButtonOutline`', () => {
+  it('renders', () => {
+    const { asFragment } = render(<ButtonOutline />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('ButtonLink`', () => {
+  it('renders', () => {
+    const { asFragment } = render(<ButtonLink />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });
