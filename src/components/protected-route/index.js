@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../../hooks/use-auth';
 
-/* eslint-disable react/jsx-props-no-spreading */
-
 function ProtectedRoute({ component: Component, ...rest }) {
   // hooks
   const { isAuthenticated } = useAuth();

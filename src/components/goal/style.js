@@ -22,6 +22,8 @@ export const GoalCell = styled(Text)`
   margin-bottom: 0;
   padding-left: 1rem;
   padding-right: 1rem;
+  display: flex;
+  align-items: center;
 `;
 
 export const GoalCellGrow = styled(GoalCell)`

@@ -11,7 +11,6 @@ function DropdownMenu({ children }) {
   const dropdownContext = useContext(DropdownContext);
 
   useOnClickOutside(ref, () => dropdownContext.closeDropdown());
-  // @todo: handle closing dropdown when action doens't destroy the menu.
 
   return (
     <Wrapper ref={ref} style={{ display: (dropdownContext.showDropdown ? 'flex' : ' none') }}>
