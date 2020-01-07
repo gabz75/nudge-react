@@ -3,7 +3,6 @@ import React from 'react';
 import Goal from 'components/goal';
 import AbsoluteSpinner from 'components/absolute-spinner';
 import DropdownKebab from 'components/dropdown-kebab';
-import { Link } from 'components/globals';
 import { GoalNewPath } from 'routes';
 import { useNudgeApi } from 'hooks/use-nudge-api';
 import { Card, Title } from './style';
@@ -41,7 +40,7 @@ function Dashboard() {
       <Card.Header>
         <Title>Your goals</Title>
         <DropdownKebab>
-          <Link to={GoalNewPath}>Add a goal</Link>
+          <DropdownKebab.Link to={GoalNewPath}>Add a goal</DropdownKebab.Link>
         </DropdownKebab>
       </Card.Header>
       <Card.Body>

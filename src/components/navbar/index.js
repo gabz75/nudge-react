@@ -3,9 +3,8 @@ import { useHistory } from 'react-router-dom';
 
 import { DashboardPath, LoginPath } from 'routes';
 import Dropdown from 'components/dropdown';
-import { ButtonOutline } from 'components/button';
 import { useAuth } from 'hooks/use-auth';
-import { Title, Link } from 'components/globals';
+import { Title } from 'components/globals';
 import { StyledNavbar, ProfileToggle } from './style';
 
 function Navbar() {
@@ -35,8 +34,8 @@ function Navbar() {
           <ProfileToggle />
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Link to={DashboardPath}>Dashboard</Link>
-          <ButtonOutline mt="sm" onClick={handleLogout}>Logout</ButtonOutline>
+          <Dropdown.Link to={DashboardPath}>Dashboard</Dropdown.Link>
+          <Dropdown.ButtonOutline mt="sm" onClick={handleLogout}>Logout</Dropdown.ButtonOutline>
         </Dropdown.Menu>
       </Dropdown>
     </StyledNavbar>

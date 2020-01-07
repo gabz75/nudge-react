@@ -30,7 +30,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  checked: undefined,
+  checked: false,
   onChange: () => {},
 };
 
