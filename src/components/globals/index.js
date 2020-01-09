@@ -13,6 +13,7 @@ import {
 
 export const Wrapper = styled.div`
   ${layout}
+  ${space}
 `;
 
 export const FlexRow = styled(Wrapper)`
@@ -91,6 +92,7 @@ export const Link = styled(RouterLink)`
 export const Text = styled.p`
   margin-top: 0;
   margin-bottom: 1rem;
+  ${color}
   ${space}
   ${typography}
   ${flexbox}

@@ -11,7 +11,7 @@ import {
 function Input(props) {
   // props
   const {
-    value, label, type, onChange,
+    value, label, type, onChange, ...rest
   } = props;
 
   // hooks
@@ -23,7 +23,7 @@ function Input(props) {
         {label}
         :
       </StyledLabel>
-      <StyledInput id={id} type={type} value={value} onChange={onChange} />
+      <StyledInput id={id} type={type} value={value} onChange={onChange} {...rest} />
     </Wrapper>
   );
 }

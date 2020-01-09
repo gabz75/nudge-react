@@ -1,10 +1,10 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 
-import QueryGetGoals from '../../graphql/queries/get-goals';
+import QueryGetGoals from 'graphql/queries/get-goals';
 
-function useGetNudges(args) {
+function useGetGoals(args) {
   return useQuery(gql(QueryGetGoals), args);
 }
 
-export default useGetNudges;
+export default useGetGoals;
