@@ -6,6 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ThemeProvider } from 'styled-components';
 
@@ -34,6 +35,13 @@ import { STORAGE_AUTH_KEY } from 'hooks/use-provide-auth';
 import theme from './theme';
 
 function App() {
+  const fragmentMatcher = new IntrospectionFragmentMatcher({
+    introspectionQueryResultData: {
+      __schema: {
+        types: [],
+      },
+    },
+  });
   const client = new ApolloClient({
     uri: 'http://localhost:3000/graphql',
     request: (operation) => {
@@ -44,6 +52,7 @@ function App() {
         },
       });
     },
+    cache: new InMemoryCache({ fragmentMatcher }),
   });
 
   return (

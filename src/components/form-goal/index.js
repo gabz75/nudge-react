@@ -30,10 +30,18 @@ function FormGoal(props) {
   const [color, setColor] = useState(goal.color);
   const [_public, setPublic] = useState(goal.public);
   const [errorMessage, setErrorMessage] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { getGoalTypes } = useNudgeApi();
-  const { loadingGoalTypes, data } = getGoalTypes();
   const [selectedGoalType, setSelectedGoalType] = useState();
+
+  const [unit, setUnit] = useState(goal.goalTypeImpl && goal.goalTypeImpl.unit);
+
+  const goalTypeState = {
+    GoalTypeBool: {},
+    GoalTypeInt: {
+      unit: [unit, setUnit],
+    },
+  };
 
   // handlers
   const handleSubmit = (e) => {
@@ -45,15 +53,21 @@ function FormGoal(props) {
         name,
         color,
         public: _public,
-        goalType: {
-          type: selectedGoalType.type,
-          variables: selectedGoalType.variables,
-        },
+        goalType: selectedGoalType.type,
+        unit,
       },
     })
       .catch((error) => setErrorMessage(error.message))
       .finally(() => isMounted.current && setLoading(false));
   };
+
+  const handleGetGoalTypesCompleted = ({ getGoalTypes: _getGoalTypes }) => {
+    setSelectedGoalType(_getGoalTypes.find((goalType) => goalType.type === goal.goalTypeImpl.goalType.type));
+    setLoading(false);
+  };
+
+  // queries
+  const { loading: loadingGoalTypes, data } = getGoalTypes({ onCompleted: handleGetGoalTypesCompleted });
 
   return (
     <Wrapper>
@@ -89,7 +103,14 @@ function FormGoal(props) {
                   ))
                 }
               </FlexRow>
-              { selectedGoalType && <FormGoalType goalType={selectedGoalType} updateGoalType={setSelectedGoalType} /> }
+              {
+                selectedGoalType && (
+                  <FormGoalType
+                    goalType={selectedGoalType}
+                    goalTypeState={goalTypeState[selectedGoalType.type]}
+                  />
+                )
+              }
             </FlexCol>
           )
         }
@@ -108,6 +129,12 @@ FormGoal.propTypes = {
     name: PropTypes.string,
     color: PropTypes.string,
     public: PropTypes.bool,
+    goalTypeImpl: PropTypes.shape({
+      goalType: PropTypes.shape({
+        type: PropTypes.string,
+      }),
+      unit: PropTypes.string,
+    }),
   }),
 };
 

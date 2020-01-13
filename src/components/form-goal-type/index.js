@@ -1,22 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Input from 'components/input';
 import { Box, Text } from 'components/globals';
 
-function FormGoalTypeInt({ goalType, updateGoalType }) {
-  // hooks
-  const [unit, setUnit] = useState();
-
+function FormGoalTypeInt({ goalType, goalTypeState }) {
   // handlers
+  const [unit, setUnit] = goalTypeState.unit;
   const onUnitChange = (e) => {
     setUnit(e.target.value);
-    updateGoalType({
-      ...goalType,
-      variables: {
-        unit,
-      },
-    });
   };
 
   return (
@@ -39,7 +31,9 @@ FormGoalTypeInt.propTypes = {
   goalType: PropTypes.shape({
     description: PropTypes.string,
   }).isRequired,
-  updateGoalType: PropTypes.func.isRequired,
+  goalTypeState: PropTypes.shape({
+    unit: PropTypes.array,
+  }).isRequired,
 };
 
 function FormGoalTypeBool({ goalType }) {
@@ -63,20 +57,19 @@ FormGoalTypeBool.propTypes = {
   }).isRequired,
 };
 
-function FormGoalType({ goalType, updateGoalType }) {
+function FormGoalType({ goalType, goalTypeState }) {
   const mapping = {
     GoalTypeBool: FormGoalTypeBool,
     GoalTypeInt: FormGoalTypeInt,
   };
 
-  return mapping[goalType.type]({ goalType, updateGoalType });
+  return mapping[goalType.type]({ goalType, goalTypeState });
 }
 
 FormGoalType.propTypes = {
   goalType: PropTypes.shape({
     description: PropTypes.string,
   }).isRequired,
-  updateGoalType: PropTypes.func.isRequired,
 };
 
 export default FormGoalType;
