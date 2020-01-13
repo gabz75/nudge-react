@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 import { Button } from 'components/button';
+import { RadioButtonOutline } from 'components/radio';
 import FormError from 'components/form-error';
 import FormSpinner from 'components/absolute-spinner';
-import { Text } from 'components/globals';
+import { Text, FlexCol } from 'components/globals';
 
 export { StyledForm, FlexCol, Link } from 'components/globals';
+
+export const Wrapper = styled(FlexCol)`
+  max-width: 600px ;
+`;
 
 export const StyledButton = styled(Button)`
   align-self: flex-end;
@@ -22,6 +27,15 @@ export const StyledFormError = styled(FormError)`
   margin-top: 1rem;
 `;
 
-export const StyledAbsoluteSpinner = styled(FormSpinner)``;
+export const StyledAbsoluteSpinner = FormSpinner;
+
+export const StyledRadioButtonOutline = styled(RadioButtonOutline)`
+  margin-right: 0.5rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+
 
 export default {};

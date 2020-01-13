@@ -47,6 +47,8 @@ export const StyledCheckbox = styled.input`
   // @todo :disabled + ${StyledLabel}:before
 `;
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  margin-bottom: 1rem
+`;
 
 export default {};

@@ -8,6 +8,16 @@ export default `
       public
       createdAt
       updatedAt
+      goalTypeImpl {
+        id
+        goalType {
+          id
+          type
+        }
+        ... on GoalTypeInt {
+          unit
+        }
+      }
     }
   }
 `;

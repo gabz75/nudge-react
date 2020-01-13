@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import ApolloClient from 'apollo-boost';
+import ApolloClient, { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ThemeProvider } from 'styled-components';
 
@@ -34,6 +34,16 @@ import { STORAGE_AUTH_KEY } from 'hooks/use-provide-auth';
 import theme from './theme';
 
 function App() {
+  // unsure why that's needed but fixes:
+  // eslint-disable-next-line max-len
+  // https://spectrum.chat/apollo/apollo-client/simple-heuristic-fragment-matcher-but-your-queries-contain-union-or-interface-types~8537e840-f75e-445f-bc1f-31e316984891
+  const fragmentMatcher = new IntrospectionFragmentMatcher({
+    introspectionQueryResultData: {
+      __schema: {
+        types: [],
+      },
+    },
+  });
   const client = new ApolloClient({
     uri: 'http://localhost:3000/graphql',
     request: (operation) => {
@@ -44,6 +54,7 @@ function App() {
         },
       });
     },
+    cache: new InMemoryCache({ fragmentMatcher }),
   });
 
   return (

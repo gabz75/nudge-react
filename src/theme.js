@@ -27,6 +27,7 @@ export default {
     borderFocus: '#000',
     body: '#fcfafa',
     backgroundColor: '#ffffff',
+    yellow: '#e2b500',
     text: {
       gray: '#93979c',
     },
