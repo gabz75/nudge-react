@@ -6,14 +6,14 @@ Nudge allows you to track daily goals as well as your mood. Define your own goal
 
 This is a prototype integrating Nudge backend services with `create-react-app`.
 
-# Context
+# Manifesto
 
-After 4 years of frontend development with Ember.js, I created this repository to experiment with the React ecosystem and compare my experience building frontend apps at scale.
+This is a work in progress app to explore the react ecosystem and compare to my ember.js professional experience.
 
-Here is a non exhaustive list of things that I would like to improve:
+Here are few things that needs to be improved:
 - Better folder structure with a cleaner prefix.
-- 100% test coverage on components
-- Finish functional scope 
+- 100% test coverage on components.
+- Finish functional scope. 
 - Improve components and integration with styled-components.
-- Use PWA to make the project usable on mobile.
+- PWA to make the app mobile friendly.
 
