@@ -86,7 +86,11 @@ function FormGoal(props) {
           value={color}
           onChange={(e) => setColor(e.target.value)}
         />
-        <Checkbox label="Public" checked={_public} onChange={(e) => setPublic(e.target.checked)} />
+        <Checkbox
+          label="Public"
+          checked={_public}
+          onChange={(e) => setPublic(e.target.checked)}
+        />
         {
           data && (
             <FlexCol>

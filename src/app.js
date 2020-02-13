@@ -10,7 +10,6 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { ThemeProvider } from 'styled-components';
 
 import ProvideAuth from 'components/provide-auth';
-
 import Navbar from 'components/navbar';
 import UnauthenticatedRoute from 'components/unauthenticated-route';
 import ProtectedRoute from 'components/protected-route';
@@ -18,15 +17,21 @@ import ProtectedRoute from 'components/protected-route';
 import LoginRoute from 'routes/login';
 import SignupRoute from 'routes/signup';
 import DashboardRoute from 'routes/dashboard';
+import ReportsRoute from 'routes/reports';
+import ReportNewRoute from 'routes/reports/new';
+import ReportUpdateRoute from 'routes/reports/update';
 import GoalNewRoute from 'routes/goal/new';
 import GoalUpdateRoute from 'routes/goal/update';
 
 import {
-  LoginPath,
-  SignupPath,
   DashboardPath,
   GoalNewPath,
   GoalUpdatePath,
+  LoginPath,
+  ReportsPath,
+  ReportNewPath,
+  ReportUpdatePath,
+  SignupPath,
 } from 'routes';
 
 import { STORAGE_AUTH_KEY } from 'hooks/use-provide-auth';
@@ -67,11 +72,14 @@ function App() {
               <Route exact path="/">
                 <Redirect push to={LoginPath} />
               </Route>
-              <UnauthenticatedRoute path={LoginPath} component={LoginRoute} />
-              <UnauthenticatedRoute path={SignupPath} component={SignupRoute} />
-              <ProtectedRoute path={DashboardPath} component={DashboardRoute} />
-              <ProtectedRoute path={GoalNewPath} component={GoalNewRoute} />
-              <ProtectedRoute path={GoalUpdatePath} component={GoalUpdateRoute} />
+              <UnauthenticatedRoute exact path={LoginPath} component={LoginRoute} />
+              <UnauthenticatedRoute exact path={SignupPath} component={SignupRoute} />
+              <ProtectedRoute exact path={DashboardPath} component={DashboardRoute} />
+              <ProtectedRoute exact path={ReportsPath} component={ReportsRoute} />
+              <ProtectedRoute exact path={ReportNewPath} component={ReportNewRoute} />
+              <ProtectedRoute exact path={ReportUpdatePath} component={ReportUpdateRoute} />
+              <ProtectedRoute exact path={GoalNewPath} component={GoalNewRoute} />
+              <ProtectedRoute exact path={GoalUpdatePath} component={GoalUpdateRoute} />
             </ThemeProvider>
           </ProvideAuth>
         </Switch>

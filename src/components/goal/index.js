@@ -6,6 +6,7 @@ import Octicon, {
 } from '@primer/octicons-react';
 import { useHistory } from 'react-router-dom';
 
+import PropTypesGoal from 'prop-types/goal';
 import DropdownKebab from 'components/dropdown-kebab';
 import { ButtonLink } from 'components/button';
 import { goalUpdatePath } from 'routes';
@@ -54,15 +55,7 @@ function Goal({ goal, ...props }) {
 }
 
 Goal.propTypes = {
-  goal: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    color: PropTypes.string,
-    archived: PropTypes.bool,
-    public: PropTypes.bool,
-    createdAt: PropTypes.string,
-    updatedAt: PropTypes.string,
-  }).isRequired,
+  goal: PropTypesGoal.isRequired,
   onDelete: PropTypes.func,
 };
 

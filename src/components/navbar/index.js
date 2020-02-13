@@ -1,7 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { DashboardPath, LoginPath } from 'routes';
+import {
+  DashboardPath,
+  ReportsPath,
+  LoginPath,
+} from 'routes';
 import Dropdown from 'components/dropdown';
 import { useAuth } from 'hooks/use-auth';
 import { Title } from 'components/globals';
@@ -35,6 +39,7 @@ function Navbar() {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Link to={DashboardPath}>Dashboard</Dropdown.Link>
+          <Dropdown.Link to={ReportsPath}>Reports</Dropdown.Link>
           <Dropdown.ButtonOutline mt="sm" onClick={handleLogout}>Logout</Dropdown.ButtonOutline>
         </Dropdown.Menu>
       </Dropdown>
