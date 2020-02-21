@@ -34,9 +34,6 @@ function ReportNewRoute() {
     goalValues: data.getGoals.map((goal) => ({ goal })),
   };
 
-
-  console.log(moodReport);
-
   return (
     <ResponsiveCenteredLayout>
       <FormReport moodReport={moodReport} onSubmit={handleSubmit} />

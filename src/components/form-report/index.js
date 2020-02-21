@@ -1,14 +1,12 @@
 import React, { useState, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
-import PropTypesGoal from 'prop-types/goal';
 import PropTypesMoodReport from 'prop-types/mood-report';
 import ReportGoal from 'components/report-goal';
 import Textarea from 'components/text-area';
 import Input from 'components/input';
 import {
   Wrapper,
-  FlexCol,
   StyledButton,
   StyledForm,
   StyledFormError,
@@ -84,7 +82,6 @@ FormReport.propTypes = {
 };
 
 FormReport.defaultProps = {
-  goals: undefined,
   moodReport: undefined,
   onSubmit: () => {},
 };

@@ -9,7 +9,7 @@ import Checkbox from 'components/checkbox';
 
 function ReportGoal({ goalValue, onChange }) {
   // hooks
-  const typedValue = goalValue.value && (goalValue.value.boolValue || goalValue.value.intValue);
+  const typedValue = goalValue.boolValue || goalValue.intValue;
   const [value, setValue] = useState(typedValue);
 
   // handlers

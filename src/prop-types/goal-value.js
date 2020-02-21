@@ -5,8 +5,6 @@ import PropTypesGoal from 'prop-types/goal';
 export default PropTypes.shape({
   id: PropTypes.string,
   goal: PropTypesGoal,
-  value: PropTypes.shape({
-    intValue: PropTypes.number,
-    boolValue: PropTypes.bool,
-  }),
+  intValue: PropTypes.number,
+  boolValue: PropTypes.bool,
 });

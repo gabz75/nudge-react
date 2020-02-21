@@ -18,7 +18,14 @@ function ReportUpdateRoute(props) {
   const { loading, data } = getMoodReport({ variables: { id: params.id } });
 
   // handlers
-  const handleSubmit = async (args) => {
+  const handleSubmit = async (variables) => {
+    const args = {
+      variables: {
+        id: data.getMoodReport.id,
+        date: data.getMoodReport.date,
+        ...variables,
+      },
+    };
     await updateMoodReport(args).then(() => history.push(ReportsPath));
   };
 

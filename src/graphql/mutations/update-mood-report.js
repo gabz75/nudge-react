@@ -1,12 +1,14 @@
 export default `
   mutation(
+    $id: ID!,
     $score: Int!,
     $doing: String!,
     $feelings: String!,
     $date: DateTime!,
     $goalValues: [GoalValueInput]
   ) {
-    createMoodReport(
+    updateMoodReport(
+      id: $id,
       score: $score,
       doing: $doing,
       feelings: $feelings,

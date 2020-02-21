@@ -29,15 +29,9 @@ export default `
             }
           }
         }
-        value {
-          ... on GoalValueInt {
-            intValue: value
-
-          }
-          ... on GoalValueBool {
-            boolValue: value
-          }
-        }
+        id
+        intValue
+        boolValue
       }
     }
   }

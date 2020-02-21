@@ -7,8 +7,7 @@ export const initialState = {
 
 export const getInitialState = (moodReport) => {
   const goalValues = moodReport.goalValues.map((goalValue) => {
-    const intValue = goalValue.value && goalValue.value.__typename === 'GoalValueInt' ? goalValue.value : null;
-    const boolValue = goalValue.value && goalValue.value.__typename === 'GoalValueBool' ? goalValue.value : null;
+    const { intValue, boolValue } = goalValue;
 
     return {
       goalId: goalValue.goal.id,

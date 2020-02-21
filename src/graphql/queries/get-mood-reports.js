@@ -10,15 +10,8 @@ export default `
       updatedAt
       goalValues {
         id
-        value {
-          ... on GoalValueInt {
-            intValue: value
-
-          }
-          ... on GoalValueBool {
-            boolValue: value
-          }
-        }
+        intValue
+        boolValue
       }
     }
   }
